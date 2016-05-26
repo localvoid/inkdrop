@@ -1,11 +1,13 @@
 import {HslColor, HsvColor} from "./color";
 
 export function complement(hsl: HslColor): HslColor {
-  return new HslColor((((hsl.h * 360) + 180) % 360) / 360, hsl.s, hsl.l, hsl.a);
+  const h = Math.round(hsl.h * 360);
+
+  return new HslColor(((h + 180) % 360) / 360, hsl.s, hsl.l, hsl.a);
 }
 
 export function triad(hsl: HslColor): [HslColor, HslColor, HslColor] {
-  const h = hsl.h * 360;
+  const h = Math.round(hsl.h * 360);
 
   return [
     hsl,
@@ -15,7 +17,7 @@ export function triad(hsl: HslColor): [HslColor, HslColor, HslColor] {
 }
 
 export function tetrad(hsl: HslColor): [HslColor, HslColor, HslColor, HslColor] {
-  const h = hsl.h * 360;
+  const h = Math.round(hsl.h * 360);
 
   return [
     hsl,
@@ -26,7 +28,7 @@ export function tetrad(hsl: HslColor): [HslColor, HslColor, HslColor, HslColor] 
 }
 
 export function splitComplement(hsl: HslColor): [HslColor, HslColor, HslColor] {
-  const h = hsl.h * 360;
+  const h = Math.round(hsl.h * 360);
 
   return [
     hsl,
@@ -36,12 +38,12 @@ export function splitComplement(hsl: HslColor): [HslColor, HslColor, HslColor] {
 }
 
 export function analogous(hsl: HslColor, results = 6, slices = 30): HslColor[] {
-  const part = 360 / slices;
+  const part = Math.round(360 / slices);
   const result = [] as HslColor[];
   result.push(hsl);
 
-  let h = hsl.h * 360;
-  for (h = ((h - (part * results >> 1)) + 720) % 360; --results; ) {
+  let h = ((Math.round(hsl.h * 360) - (part * results >> 1)) + 720) % 360;
+  while (results--) {
     h = (hsl.h + part) % 360;
     result.push(new HslColor(h / 360, hsl.s, hsl.l, hsl.a));
   }
