@@ -3,4 +3,4 @@ export {rgbToHsl, hslToRgb, rgbToHsv, hsvToRgb, rgbToHex, hexToRgb} from "./conv
 export {desaturate, saturate, greyscale, lighten, darken, brighten, spin} from "./transform";
 export {complement, triad, tetrad, splitComplement, analogous, monochromatic} from "./combination";
 export {luminance, brightness, isDark, isLight} from "./utils";
-export {formatRgbToHexMin, formatRgbToHex8, formatHsvToString} from "./format";
+export {formatRgbToHex, formatRgbToString, formatHsvToString} from "./format";
