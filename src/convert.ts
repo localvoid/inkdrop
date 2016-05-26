@@ -1,4 +1,4 @@
-import {RgbColor, HsvColor, HslColor} from "./color";
+import {RgbColor, HsvColor, HslColor, CmykColor} from "./color";
 
 export function rgbToHsl(rgb: RgbColor): HslColor {
   const r = rgb.r;
@@ -122,6 +122,24 @@ export function hsvToRgb(hsv: HsvColor): RgbColor {
   const b = [p, p, t, v, v, q][mod];
 
   return new RgbColor(r, g, b, hsv.a);
+}
+
+export function rgbToCmyk(rgb: RgbColor): CmykColor {
+  const k = Math.min(1 - rgb.r, 1 - rgb.g, 1 - rgb.b);
+  const c = (1 - rgb.r - k) / (1 - k);
+  const m = (1 - rgb.g - k) / (1 - k);
+  const y = (1 - rgb.b - k) / (1 - k);
+
+  return new CmykColor(c, m, y, k, rgb.a);
+}
+
+export function cmykToRgb(cmyk: CmykColor): RgbColor {
+  const k = cmyk.k;
+  const r = 1 - Math.min(1, (cmyk.c * (1 - k)) + k);
+  const g = 1 - Math.min(1, (cmyk.m * (1 - k)) + k);
+  const b = 1 - Math.min(1, (cmyk.y * (1 - k)) + k);
+
+  return new RgbColor(r, g, b, cmyk.a);
 }
 
 export function rgbToHex(rgb: RgbColor): string {

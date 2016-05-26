@@ -12,7 +12,11 @@ export class RgbColor {
   }
 
   equals(other: RgbColor): boolean {
-    if ((this === other) || (this.r === other.r && this.g === other.g && this.b === other.b)) {
+    if ((this === other) ||
+        (this.r === other.r &&
+         this.g === other.g &&
+         this.b === other.b &&
+         this.a === other.a)) {
       return true;
     }
     return false;
@@ -33,7 +37,11 @@ export class HsvColor {
   }
 
   equals(other: HsvColor): boolean {
-    if ((this === other) || (this.h === other.h && this.s === other.s && this.v === other.v)) {
+    if ((this === other) ||
+        (this.h === other.h &&
+         this.s === other.s &&
+         this.v === other.v &&
+         this.a === other.a)) {
       return true;
     }
     return false;
@@ -54,7 +62,39 @@ export class HslColor {
   }
 
   equals(other: HslColor): boolean {
-    if ((this === other) || (this.h === other.h && this.s === other.s && this.l === other.l)) {
+    if ((this === other) ||
+        (this.h === other.h &&
+         this.s === other.s &&
+         this.l === other.l &&
+         this.a === other.a)) {
+      return true;
+    }
+    return false;
+  }
+}
+
+export class CmykColor {
+  readonly c: number;
+  readonly m: number;
+  readonly y: number;
+  readonly k: number;
+  readonly a: number;
+
+  constructor(c: number, m: number, y: number, k: number, a = 1) {
+    this.c = c;
+    this.m = m;
+    this.y = y;
+    this.k = k;
+    this.a = a;
+  }
+
+  equals(other: CmykColor): boolean {
+    if ((this === other) ||
+        (this.c === other.c &&
+         this.m === other.m &&
+         this.y === other.y &&
+         this.k === other.k &&
+         this.a === other.a)) {
       return true;
     }
     return false;
