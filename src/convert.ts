@@ -123,3 +123,23 @@ export function hsvToRgb(hsv: HsvColor): RgbColor {
 
   return new RgbColor(r, g, b, hsv.a);
 }
+
+export function rgbToHex(rgb: RgbColor): string {
+  const v =
+    ((Math.round(rgb.r * 255) << 16) +
+     (Math.round(rgb.g * 255) << 8) +
+     Math.round(rgb.b * 255)) |
+    (1 << 24);
+
+  return v.toString(16).substring(1);
+}
+
+export function hexToRgb(hex: string): RgbColor {
+  const n = parseInt(hex, 16);
+
+  return new RgbColor(
+    (n >> 16) & 0xff,
+    (n >> 8) & 0xff,
+    n & 0xff,
+    1);
+};
