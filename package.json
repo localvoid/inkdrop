@@ -1,0 +1,42 @@
+{
+  "name": "inkdrop",
+  "main": "dist/umd/inkdrop.js",
+  "jsnext:main": "dist/es6/inkdrop.js",
+  "typings": "dist/typings/inkdrop.d.ts",
+  "version": "0.1.0",
+  "description": "Javascript (TypeScript) color manipulation and conversion library.",
+  "license": "Apache-2.0",
+  "author": {
+    "name": "Boris Kaul",
+    "email": "localvoid@gmail.com",
+    "url": "https://github.com/localvoid"
+  },
+  "keywords": [
+    "color"
+  ],
+  "homepage": "https://github.com/localvoid/inkdrop",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/localvoid/inkdrop"
+  },
+  "bugs": {
+    "url": "https://github.com/localvoid/inkdrop/issues"
+  },
+  "github": "https://github.com/localvoid/inkdrop",
+  "files": [
+    "dist",
+    "README.md"
+  ],
+  "dependencies": {},
+  "devDependencies": {
+    "del": "^2.2.0",
+    "gulp": "github:gulpjs/gulp#4.0",
+    "gulp-tslint": "^5.0.0",
+    "gulp-typescript": "^2.13.4",
+    "merge2": "^1.0.2",
+    "rollup": "^0.26.3",
+    "rollup-plugin-typescript": "^0.7.5",
+    "tslint": "^3.10.2",
+    "typescript": "^1.9.0-dev.20160520-1.0"
+  }
+}
