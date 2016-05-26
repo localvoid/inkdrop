@@ -59,7 +59,7 @@ export function brighten(rgb: RgbColor, amount = 0.1): RgbColor {
 }
 
 export function spin(hsl: HslColor, amount: number): HslColor {
-  const hue = ((hsl.h * 360) + amount) % 360;
+  const hue = (Math.round(hsl.h * 360) + amount) % 360;
   return new HslColor(
     ((hue < 0) ? 360 + hue : hue) / 360,
     hsl.s,
