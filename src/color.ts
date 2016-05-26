@@ -73,6 +73,31 @@ export class HslColor {
   }
 }
 
+export class HwbColor {
+  readonly h: number;
+  readonly w: number;
+  readonly b: number;
+  readonly a: number;
+
+  constructor(h: number, w: number, b: number, a = 1) {
+    this.h = h;
+    this.w = w;
+    this.b = b;
+    this.a = a;
+  }
+
+  equals(other: HwbColor): boolean {
+    if ((this === other) ||
+        (this.h === other.h &&
+         this.w === other.w &&
+         this.b === other.b &&
+         this.a === other.a)) {
+      return true;
+    }
+    return false;
+  }
+}
+
 export class CmykColor {
   readonly c: number;
   readonly m: number;

@@ -1,4 +1,4 @@
-import {RgbColor, HsvColor, HslColor, CmykColor} from "./color";
+import {RgbColor, HsvColor, HslColor, HwbColor, CmykColor} from "./color";
 
 export function rgbToHsl(rgb: RgbColor): HslColor {
   const r = rgb.r;
@@ -122,6 +122,45 @@ export function hsvToRgb(hsv: HsvColor): RgbColor {
   const b = [p, p, t, v, v, q][mod];
 
   return new RgbColor(r, g, b, hsv.a);
+}
+
+export function rgbToHwb(rgb: RgbColor): HwbColor {
+  const hsl = rgbToHsl(rgb);
+  const w = Math.min(rgb.r, rgb.g, rgb.b);
+  const b = 1 - Math.max(rgb.r, rgb.g, rgb.b);
+
+  return new HwbColor(hsl.h, w, b, rgb.a);
+}
+
+export function hwbToRgb(hwb: HwbColor): RgbColor {
+  let w = hwb.w;
+  let b = hwb.b;
+
+  const h = hwb.h * 6;
+  const i = Math.floor(h);
+  const v = 1 - b;
+  let f = h - i;
+
+  if ((i & 0x01) !== 0) {
+    f = 1 - f;
+  }
+
+  const n = w + f * (v - w);
+  let r: number;
+  let g: number;
+
+  switch (i) {
+    default:
+    case 6:
+    case 0: r = v; g = n; b = w; break;
+    case 1: r = n; g = v; b = w; break;
+    case 2: r = w; g = v; b = n; break;
+    case 3: r = w; g = n; b = v; break;
+    case 4: r = n; g = w; b = v; break;
+    case 5: r = v; g = w; b = n; break;
+  }
+
+  return new RgbColor(r, g, b, hwb.a);
 }
 
 export function rgbToCmyk(rgb: RgbColor): CmykColor {
