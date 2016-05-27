@@ -1,5 +1,5 @@
 import {RgbColor, HslColor} from "../lib/color";
-import {desaturate, saturate, greyscale, lighten, darken, brighten, spin} from "../lib/transform";
+import {desaturate, saturate, greyscale, lighten, darken, brighten, spin, mixColors} from "../lib/transform";
 
 describe("transform", () => {
   describe("desaturate", () => {
@@ -195,6 +195,30 @@ describe("transform", () => {
       expect(rgb.r).toBeCloseTo(0.6, 2);
       expect(rgb.g).toBeCloseTo(0.6, 2);
       expect(rgb.b).toBeCloseTo(0.6, 2);
+    });
+  });
+
+  describe("mixColors", () => {
+    it("should mix rgb[64, 64, 64] and rgb[128, 128, 128] and get rgb[96, 96, 96]", () => {
+      const a = new RgbColor(0.25, 0.25, 0.25);
+      const b = new RgbColor(0.5, 0.5, 0.5);
+      const rgb = mixColors(a, b);
+
+      expect(Math.round(rgb.r * 255)).toBe(96);
+      expect(Math.round(rgb.g * 255)).toBe(96);
+      expect(Math.round(rgb.b * 255)).toBe(96);
+      expect(rgb.a).toBe(1);
+    });
+
+    it("should mix rgb[64, 64, 64, 0.5] and rgb[128, 128, 128] and get rgb[80, 80, 80, 0.75]", () => {
+      const a = new RgbColor(0.25, 0.25, 0.25, 0.5);
+      const b = new RgbColor(0.5, 0.5, 0.5);
+      const rgb = mixColors(a, b);
+
+      expect(Math.round(rgb.r * 255)).toBe(80);
+      expect(Math.round(rgb.g * 255)).toBe(80);
+      expect(Math.round(rgb.b * 255)).toBe(80);
+      expect(rgb.a).toBeCloseTo(0.75, 2);
     });
   });
 });

@@ -48,7 +48,6 @@ All color models are using values with a range `[0, 1]` for all properties.
 - `brightness(rgb: RgbColor): number`
 - `isDark(rgb: RgbColor): boolean`
 - `isLight(rgb: RgbColor): boolean`
-- `mixColors(a: RgbColor, b: RgbColor, amount = 0.5): RgbColor`
 
 ## Transformation functions
 
@@ -59,6 +58,7 @@ All color models are using values with a range `[0, 1]` for all properties.
 - `darken(hsl: HslColor, amount = 0.1): HslColor`
 - `brighten(rgb: RgbColor, amount = 0.1): RgbColor`
 - `spin(hsl: HslColor, amount: number): HslColor`
+- `mixColors(a: RgbColor, b: RgbColor, amount = 0.5): RgbColor`
 
 ## Combination functions
 
