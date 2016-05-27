@@ -141,11 +141,11 @@ export function hwbToRgb(hwb: HwbColor): RgbColor {
   const v = 1 - b;
   let f = h - i;
 
-  if ((i & 0x01) !== 0) {
+  if ((i & 1) !== 0) { // is odd
     f = 1 - f;
   }
 
-  const n = w + f * (v - w);
+  const n = w + (f * (v - w)); // lerp between `w` a `v`
   let r: number;
   let g: number;
 
@@ -165,18 +165,20 @@ export function hwbToRgb(hwb: HwbColor): RgbColor {
 
 export function rgbToCmyk(rgb: RgbColor): CmykColor {
   const k = Math.min(1 - rgb.r, 1 - rgb.g, 1 - rgb.b);
-  const c = (1 - rgb.r - k) / (1 - k);
-  const m = (1 - rgb.g - k) / (1 - k);
-  const y = (1 - rgb.b - k) / (1 - k);
+  const i = 1 - k;
+  const c = (i - rgb.r) / i;
+  const m = (i - rgb.g) / i;
+  const y = (i - rgb.b) / i;
 
   return new CmykColor(c, m, y, k, rgb.a);
 }
 
 export function cmykToRgb(cmyk: CmykColor): RgbColor {
   const k = cmyk.k;
-  const r = 1 - Math.min(1, (cmyk.c * (1 - k)) + k);
-  const g = 1 - Math.min(1, (cmyk.m * (1 - k)) + k);
-  const b = 1 - Math.min(1, (cmyk.y * (1 - k)) + k);
+  const i = 1 - k;
+  const r = 1 - Math.min(1, (cmyk.c * i) + k);
+  const g = 1 - Math.min(1, (cmyk.m * i) + k);
+  const b = 1 - Math.min(1, (cmyk.y * i) + k);
 
   return new RgbColor(r, g, b, cmyk.a);
 }
@@ -185,7 +187,7 @@ export function rgbToHex(rgb: RgbColor): string {
   const v =
     ((Math.round(rgb.r * 255) << 16) +
      (Math.round(rgb.g * 255) << 8) +
-     Math.round(rgb.b * 255)) |
+     (Math.round(rgb.b * 255))) |
     (1 << 24);
 
   return v.toString(16).substring(1);
