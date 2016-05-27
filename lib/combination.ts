@@ -32,12 +32,11 @@ export function splitComplement(hsl: HslColor): [HslColor, HslColor, HslColor] {
 export function analogous(hsl: HslColor, results = 6, slices = 30): HslColor[] {
   const part = 1 / slices;
   const result = [] as HslColor[];
-  result.push(hsl);
 
-  let h = ((hsl.h - (part * results >> 1)) + 2) % 1;
+  let h = (hsl.h - (part * (results >> 1))) % 1;
   while (results--) {
-    h = (hsl.h + part) % 1;
     result.push(new HslColor(h, hsl.s, hsl.l, hsl.a));
+    h = (h + part) % 1;
   }
 
   return result;
