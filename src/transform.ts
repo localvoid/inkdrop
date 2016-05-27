@@ -10,6 +10,13 @@ function clamp01(v: number): number {
   return v;
 }
 
+/**
+ * Desaturate.
+ *
+ * @param hsl HSL color
+ * @param smount value should be normalized [0, 1]
+ * @returns HSL color
+ */
 export function desaturate(hsl: HslColor, amount = 0.1): HslColor {
   return new HslColor(
     hsl.h,
@@ -18,6 +25,13 @@ export function desaturate(hsl: HslColor, amount = 0.1): HslColor {
     hsl.a);
 }
 
+/**
+ * Saturate.
+ *
+ * @param hsl HSL color
+ * @param amount value should be normalized [0, 1]
+ * @returns HSL color
+ */
 export function saturate(hsl: HslColor, amount = 0.1): HslColor {
   return new HslColor(
     hsl.h,
@@ -26,6 +40,12 @@ export function saturate(hsl: HslColor, amount = 0.1): HslColor {
     hsl.a);
 }
 
+/**
+ * Greyscale.
+ *
+ * @param hsl HSL color
+ * @returns HSL color
+ */
 export function greyscale(hsl: HslColor): HslColor {
   return new HslColor(
     hsl.h,
@@ -34,6 +54,13 @@ export function greyscale(hsl: HslColor): HslColor {
     hsl.a);
 }
 
+/**
+ * Lighten.
+ *
+ * @param hsl HSL color
+ * @param amount value should be normalized [0, 1]
+ * @returns HSL color
+ */
 export function lighten(hsl: HslColor, amount = 0.1): HslColor {
   return new HslColor(
     hsl.h,
@@ -42,6 +69,13 @@ export function lighten(hsl: HslColor, amount = 0.1): HslColor {
     hsl.a);
 }
 
+/**
+ * Darken.
+ *
+ * @param hsl HSL color
+ * @param amount value should be normalized [0, 1]
+ * @returns HSL color
+ */
 export function darken(hsl: HslColor, amount = 0.1): HslColor {
   return new HslColor(
     hsl.h,
@@ -50,6 +84,13 @@ export function darken(hsl: HslColor, amount = 0.1): HslColor {
     hsl.a);
 }
 
+/**
+ * Brighten.
+ *
+ * @param rgb RGB color
+ * @param amount value should be normalized [0, 1]
+ * @returns RGB color
+ */
 export function brighten(rgb: RgbColor, amount = 0.1): RgbColor {
   return new RgbColor(
     clamp01(rgb.r + amount),
@@ -58,10 +99,16 @@ export function brighten(rgb: RgbColor, amount = 0.1): RgbColor {
     rgb.a);
 }
 
+/**
+ * Spin.
+ *
+ * @param hsl HSL color
+ * @param amount value should be normalized [0, 1]
+ * @returns HSL color
+ */
 export function spin(hsl: HslColor, amount: number): HslColor {
-  const hue = (Math.round(hsl.h * 360) + amount) % 360;
   return new HslColor(
-    ((hue < 0) ? 360 + hue : hue) / 360,
+    (hsl.h + amount) % 1,
     hsl.s,
     hsl.l,
     hsl.a);

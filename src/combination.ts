@@ -1,51 +1,43 @@
 import {HslColor, HsvColor} from "./color";
 
 export function complement(hsl: HslColor): HslColor {
-  const h = Math.round(hsl.h * 360);
-
-  return new HslColor(((h + 180) % 360) / 360, hsl.s, hsl.l, hsl.a);
+  return new HslColor((hsl.h + 0.5) % 1, hsl.s, hsl.l, hsl.a);
 }
 
 export function triad(hsl: HslColor): [HslColor, HslColor, HslColor] {
-  const h = Math.round(hsl.h * 360);
-
   return [
     hsl,
-    new HslColor(((h + 120) % 360) / 360, hsl.s, hsl.l, hsl.a),
-    new HslColor(((h + 240) % 360) / 360, hsl.s, hsl.l, hsl.a),
+    new HslColor((hsl.h + (120 / 360)) % 1, hsl.s, hsl.l, hsl.a),
+    new HslColor((hsl.h + (240 / 360)) % 1, hsl.s, hsl.l, hsl.a),
   ];
 }
 
 export function tetrad(hsl: HslColor): [HslColor, HslColor, HslColor, HslColor] {
-  const h = Math.round(hsl.h * 360);
-
   return [
     hsl,
-    new HslColor(((h + 90) % 360) / 360, hsl.s, hsl.l, hsl.a),
-    new HslColor(((h + 180) % 360) / 360, hsl.s, hsl.l, hsl.a),
-    new HslColor(((h + 270) % 360) / 360, hsl.s, hsl.l, hsl.a),
+    new HslColor((hsl.h + 0.25) % 1, hsl.s, hsl.l, hsl.a),
+    new HslColor((hsl.h + 0.5) % 1, hsl.s, hsl.l, hsl.a),
+    new HslColor((hsl.h + 0.75) % 1, hsl.s, hsl.l, hsl.a),
   ];
 }
 
 export function splitComplement(hsl: HslColor): [HslColor, HslColor, HslColor] {
-  const h = Math.round(hsl.h * 360);
-
   return [
     hsl,
-    new HslColor(((h + 72) % 360) / 360, hsl.s, hsl.l, hsl.a),
-    new HslColor(((h + 216) % 360) / 360, hsl.s, hsl.l, hsl.a),
+    new HslColor((hsl.h + 0.2) % 1, hsl.s, hsl.l, hsl.a),
+    new HslColor((hsl.h + 0.6) % 1, hsl.s, hsl.l, hsl.a),
   ];
 }
 
 export function analogous(hsl: HslColor, results = 6, slices = 30): HslColor[] {
-  const part = Math.round(360 / slices);
+  const part = 1 / slices;
   const result = [] as HslColor[];
   result.push(hsl);
 
-  let h = ((Math.round(hsl.h * 360) - (part * results >> 1)) + 720) % 360;
+  let h = ((hsl.h - (part * results >> 1)) + 2) % 1;
   while (results--) {
-    h = (hsl.h + part) % 360;
-    result.push(new HslColor(h / 360, hsl.s, hsl.l, hsl.a));
+    h = (hsl.h + part) % 1;
+    result.push(new HslColor(h, hsl.s, hsl.l, hsl.a));
   }
 
   return result;

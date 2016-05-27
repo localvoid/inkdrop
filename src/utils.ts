@@ -1,11 +1,12 @@
 import {RgbColor} from "./color";
 
 /**
- * Returns luminance.
- *
- * Range: [0, 1]
+ * Luminance.
  *
  * http://www.w3.org/TR/2008/REC-WCAG20-20081211/#relativeluminancedef
+ *
+ * @param rgb RGB color
+ * @returns luminance with a range: [0, 1]
  */
 export function luminance(rgb: RgbColor): number {
   let r = rgb.r;
@@ -20,25 +21,28 @@ export function luminance(rgb: RgbColor): number {
 }
 
 /**
- * Returns brightness.
- *
- * Range: [0, 1]
+ * Brightness.
  *
  * http://www.w3.org/TR/AERT#color-contrast
+ *
+ * @param rgb RGB color
+ * @return brightness with a range: [0, 1]
  */
 export function brightness(rgb: RgbColor): number {
   return ((rgb.r * 299) + (rgb.g * 587) + (rgb.b * 114)) / 1000;
 }
 
 /**
- * Returns true if color is dark.
+ * @param rgb RGB color
+ * @returns true if color is dark
  */
 export function isDark(rgb: RgbColor): boolean {
   return brightness(rgb) < 0.5;
 }
 
 /**
- * Returns true if color is light.
+ * @param rgb RGB color
+ * @eturns true if color is light.
  */
 export function isLight(rgb: RgbColor): boolean {
   return brightness(rgb) >= 0.5;
