@@ -1,11 +1,23 @@
 # InkDrop
 
+[![Npm version](https://img.shields.io/npm/v/inkdrop.svg?style=flat-square)](https://www.npmjs.com/package/kivi)
+[![Npm downloads](https://img.shields.io/npm/dm/inkdrop.svg?style=flat-square)](https://www.npmjs.com/package/kivi)
+[![License](https://img.shields.io/npm/l/inkdrop.svg?style=flat-square)](https://www.npmjs.com/package/kivi)
+
 Javascript (TypeScript) color manipulation and conversion library.
 
 ## Motivation
 
 This library doesn't perform any implicit conversions between different color models and implemented in a way so that
 js compilers with dead code elimination could easily remove unused code.
+
+## Installation
+
+Npm package `inkdrop` provides umd modules, es6 modules at `jsnext:main` and TypeScript typings.
+
+```sh
+$ npm install inkdrop
+```
 
 ## Color models
 
@@ -35,7 +47,8 @@ All color models are using values with a range `[0, 1]` for all properties.
 - `luminance(rgb: RgbColor): number`
 - `brightness(rgb: RgbColor): number`
 - `isDark(rgb: RgbColor): boolean`
-- `isLight(rgb: RgbColor): boolen`
+- `isLight(rgb: RgbColor): boolean`
+- `mixColors(a: RgbColor, b: RgbColor, amount = 0.5): RgbColor`
 
 ## Transformation functions
 
