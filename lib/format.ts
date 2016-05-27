@@ -1,4 +1,4 @@
-import {RgbColor, HsvColor} from "./color";
+import {RgbColor, HslColor, HsvColor} from "./color";
 
 /**
  * Convert RGB color to HEX formatted string.
@@ -14,7 +14,7 @@ export function formatRgbToHex(rgb: RgbColor): string {
   if (((r >> 4) === (r & 0xf)) &&
       ((g >> 4) === (g & 0xf)) &&
       ((b >> 4) === (b & 0xf))) {
-    return "#" + (((r << 8) + (g << 4) + b) | (1 << 12)).toString(16).substring(1);
+    return "#" + ((((r & 0xf) << 8) + ((g & 0xf) << 4) + (b & 0xf)) | (1 << 12)).toString(16).substring(1);
   }
 
   return "#" + (((r << 16) + (g << 8) + b) | (1 << 24)).toString(16).substring(1);
@@ -33,7 +33,23 @@ export function formatRgbToString(rgb: RgbColor): string {
 
   return (rgb.a === 1) ?
     `rgb(${r},${g},${b})` :
-    `rgba(${r},${g},${b},${rgb.a.toFixed(4)})`;
+    `rgba(${r},${g},${b},${rgb.a})`;
+}
+
+/**
+ * Convert HSL color to formatted string.
+ *
+ * @param hsl HSL color
+ * @returns string in format `hsl(h,s%,v%)` or `hsla(h,s%,v%,a)`
+ */
+export function formatHslToString(hsl: HslColor): string {
+  const h = Math.round(hsl.h * 360);
+  const s = Math.round(hsl.s * 100);
+  const l = Math.round(hsl.l * 100);
+
+  return (hsl.a === 1) ?
+    `hsl(${h},${s}%,${l}%)` :
+    `hsla(${h},${s}%,${l}%,${hsl.a})`;
 }
 
 /**
@@ -49,5 +65,5 @@ export function formatHsvToString(hsv: HsvColor): string {
 
   return (hsv.a === 1) ?
     `hsv(${h},${s}%,${v}%)` :
-    `hsva(${h},${s}%,${v}%,${hsv.a.toFixed(4)})`;
+    `hsva(${h},${s}%,${v}%,${hsv.a})`;
 }

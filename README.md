@@ -60,4 +60,5 @@ All color models are using values with a range `[0, 1]` for all properties.
 
 - `formatRgbToHex(rgb: RgbColor): string`
 - `formatRgbToString(rgb: RgbColor): string`
+- `formatHslToString(hsl: HslColor): string`
 - `formatHsvToString(hsv: HsvColor): string`
