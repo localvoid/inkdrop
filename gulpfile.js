@@ -1,4 +1,6 @@
 const gulp = require("gulp");
+const series = gulp.series;
+const parallel = gulp.parallel;
 const typescript = require("typescript");
 const ts = require("gulp-typescript");
 const tslint = require("gulp-tslint");
@@ -104,5 +106,5 @@ function test() {
 }
 
 exports.clean = clean;
-exports.dist = gulp.series(clean, gulp.parallel(buildLib, gulp.series(buildES6, distES6), distUMD));
-exports.test = gulp.series(cleanTests, gulp.parallel(buildLib, buildTests), test);
+exports.dist = series(clean, parallel(buildLib, series(buildES6, distES6), distUMD));
+exports.test = series(cleanTests, parallel(buildLib, buildTests), test);

@@ -1,3 +1,6 @@
+/**
+ * RGB Color.
+ */
 export class RgbColor {
   readonly r: number;
   readonly g: number;
@@ -23,6 +26,9 @@ export class RgbColor {
   }
 }
 
+/**
+ * HSV Color.
+ */
 export class HsvColor {
   readonly h: number;
   readonly s: number;
@@ -48,6 +54,9 @@ export class HsvColor {
   }
 }
 
+/**
+ * HSL Color.
+ */
 export class HslColor {
   readonly h: number;
   readonly s: number;
@@ -73,6 +82,9 @@ export class HslColor {
   }
 }
 
+/**
+ * HWB Color.
+ */
 export class HwbColor {
   readonly h: number;
   readonly w: number;
@@ -98,6 +110,9 @@ export class HwbColor {
   }
 }
 
+/**
+ * CMYK Color.
+ */
 export class CmykColor {
   readonly c: number;
   readonly m: number;

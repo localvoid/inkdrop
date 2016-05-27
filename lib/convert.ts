@@ -137,7 +137,7 @@ export function hwbToRgb(hwb: HwbColor): RgbColor {
   let b = hwb.b;
 
   const ratio = w + b;
-  if (ratio > 1) {
+  if (ratio > 1) { // normalize if sum of `w` and `b` is more than 1
     w /= ratio;
     b /= ratio;
   }

@@ -9,6 +9,8 @@ js compilers with dead code elimination could easily remove unused code.
 
 ## Color models
 
+All color models are using values with a range `[0, 1]` for all properties.
+
 - `RgbColor`
 - `HsvColor`
 - `HslColor`

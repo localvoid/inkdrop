@@ -29,7 +29,7 @@ export function luminance(rgb: RgbColor): number {
  * @return brightness with a range: [0, 1]
  */
 export function brightness(rgb: RgbColor): number {
-  return ((rgb.r * 299) + (rgb.g * 587) + (rgb.b * 114)) / 1000;
+  return ((rgb.r * 299) + (rgb.g * 587) + (rgb.b * 114)) * 0.001;
 }
 
 /**
