@@ -3,7 +3,7 @@
   "main": "dist/umd/inkdrop.js",
   "jsnext:main": "dist/es6/inkdrop.js",
   "typings": "dist/typings/inkdrop.d.ts",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Javascript (TypeScript) color manipulation and conversion library.",
   "license": "Apache-2.0",
   "author": {
