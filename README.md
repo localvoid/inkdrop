@@ -1,5 +1,6 @@
 # InkDrop
 
+[![Build status](https://img.shields.io/travis/localvoid/inkdrop.svg?style=flat-square)](https://travis-ci.org/localvoid/inkdrop)
 [![Npm version](https://img.shields.io/npm/v/inkdrop.svg?style=flat-square)](https://www.npmjs.com/package/inkdrop)
 [![Npm downloads](https://img.shields.io/npm/dm/inkdrop.svg?style=flat-square)](https://www.npmjs.com/package/inkdrop)
 [![License](https://img.shields.io/npm/l/inkdrop.svg?style=flat-square)](https://www.npmjs.com/package/inkdrop)
