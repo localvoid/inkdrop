@@ -1,17 +1,59 @@
 const gulp = require("gulp");
+const typescript = require("typescript");
+const ts = require("gulp-typescript");
+const tslint = require("gulp-tslint");
 const del = require("del");
 const tsConfig = require("./tsconfig.json");
 const rollup = require("rollup");
 const rollupTypeScript = require("rollup-plugin-typescript");
 
-gulp.task("clean", del.bind(undefined, ["dist", "build"]));
+function clean() {
+  return del(["dist", "build"]);
+}
 
-gulp.task("build:es6", () => {
-  const ts = require("gulp-typescript");
-  const tslint = require("gulp-tslint");
+function cleanTests() {
+  return del("build/tests");
+}
+
+function buildLib() {
   const merge = require("merge2");
 
-  const result = gulp.src(["src/**/*.ts"])
+  const result = gulp.src(["lib/**/*.ts"])
+    .pipe(tslint())
+    .pipe(tslint.report("verbose", {
+      emitError: false,
+    }))
+    .pipe(ts(Object.assign(tsConfig.compilerOptions, {
+      typescript: typescript,
+      target: "es6",
+      module: "commonjs",
+      declaration: true,
+    })));
+
+  return merge([
+    result.dts.pipe(gulp.dest("dist/typings")),
+    result.js.pipe(gulp.dest("build/lib")),
+  ]);
+}
+
+function buildTests() {
+  return gulp.src(["tests/**/*.ts", "typings/index.d.ts"])
+    .pipe(tslint())
+    .pipe(tslint.report("verbose", {
+      emitError: false,
+    }))
+    .pipe(ts(Object.assign(tsConfig.compilerOptions, {
+      typescript: typescript,
+      target: "es6",
+      module: "commonjs",
+    })))
+    .pipe(gulp.dest("build"));
+}
+
+function buildES6() {
+  const merge = require("merge2");
+
+  const result = gulp.src(["lib/**/*.ts"])
     .pipe(tslint())
     .pipe(tslint.report("verbose", {
       emitError: false,
@@ -19,16 +61,11 @@ gulp.task("build:es6", () => {
     .pipe(ts(Object.assign(tsConfig.compilerOptions, {
       typescript: require("typescript"),
       target: "es6",
-      declaration: true,
-    })));
+    })))
+    .pipe(gulp.dest("build/es6"));
+}
 
-  return merge([
-    result.dts.pipe(gulp.dest("dist/typings")),
-    result.js.pipe(gulp.dest("build/es6")),
-  ]);
-});
-
-gulp.task("dist:es6", gulp.series("build:es6", () => {
+function distES6() {
   return rollup.rollup({
     entry: "build/es6/inkdrop.js",
   }).then(function(bundle) {
@@ -37,14 +74,14 @@ gulp.task("dist:es6", gulp.series("build:es6", () => {
       dest: "dist/es6/inkdrop.js",
     });
   });
-}));
+}
 
-gulp.task("dist:umd", () => {
+function distUMD() {
   return rollup.rollup({
     entry: "src/inkdrop.ts",
     plugins: [
       rollupTypeScript(Object.assign(tsConfig.compilerOptions, {
-        typescript: require("typescript"),
+        typescript: typescript,
         target: "es5",
         module: "es6",
         declaration: false,
@@ -57,6 +94,15 @@ gulp.task("dist:umd", () => {
       dest: "dist/umd/inkdrop.js",
     });
   });
-});
+}
 
-gulp.task("dist", gulp.series("clean", gulp.parallel(["dist:es6", "dist:umd"])));
+function test() {
+  const jasmine = require("gulp-jasmine");
+
+  return gulp.src("build/tests/*.spec.js")
+    .pipe(jasmine());
+}
+
+exports.clean = clean;
+exports.dist = gulp.series(clean, gulp.parallel(buildLib, gulp.series(buildES6, distES6), distUMD));
+exports.test = gulp.series(cleanTests, gulp.parallel(buildLib, buildTests), test);

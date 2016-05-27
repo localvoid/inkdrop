@@ -136,6 +136,12 @@ export function hwbToRgb(hwb: HwbColor): RgbColor {
   let w = hwb.w;
   let b = hwb.b;
 
+  const ratio = w + b;
+  if (ratio > 1) {
+    w /= ratio;
+    b /= ratio;
+  }
+
   const h = hwb.h * 6;
   const i = Math.floor(h);
   const v = 1 - b;
@@ -166,9 +172,18 @@ export function hwbToRgb(hwb: HwbColor): RgbColor {
 export function rgbToCmyk(rgb: RgbColor): CmykColor {
   const k = Math.min(1 - rgb.r, 1 - rgb.g, 1 - rgb.b);
   const i = 1 - k;
-  const c = (i - rgb.r) / i;
-  const m = (i - rgb.g) / i;
-  const y = (i - rgb.b) / i;
+  let c = (i - rgb.r) / i;
+  let m = (i - rgb.g) / i;
+  let y = (i - rgb.b) / i;
+  if (c !== c) { // isNaN
+    c = 0;
+  }
+  if (m !== m) { // isNaN
+    m = 0;
+  }
+  if (y !== y) { // isNaN
+    y = 0;
+  }
 
   return new CmykColor(c, m, y, k, rgb.a);
 }
@@ -197,8 +212,8 @@ export function hexToRgb(hex: string): RgbColor {
   const n = parseInt(hex, 16);
 
   return new RgbColor(
-    (n >> 16) & 0xff,
-    (n >> 8) & 0xff,
-    n & 0xff,
+    ((n >> 16) & 0xff) / 255,
+    ((n >> 8) & 0xff) / 255,
+    (n & 0xff) / 255,
     1);
-};
+}

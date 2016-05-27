@@ -31,8 +31,10 @@
   "devDependencies": {
     "del": "^2.2.0",
     "gulp": "github:gulpjs/gulp#4.0",
+    "gulp-jasmine": "^2.3.0",
     "gulp-tslint": "^5.0.0",
     "gulp-typescript": "^2.13.4",
+    "jasmine": "^2.4.1",
     "merge2": "^1.0.2",
     "rollup": "^0.26.3",
     "rollup-plugin-typescript": "^0.7.5",

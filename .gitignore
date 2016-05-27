@@ -2,6 +2,7 @@ build
 dist
 
 node_modules
+typings
 
 .DS_Store
 .idea
