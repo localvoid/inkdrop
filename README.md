@@ -63,15 +63,15 @@ All color models are using values with a range `[0, 1]` for all properties.
 - `absWhiten(hwb: HwbColor, amount = 0.1): HwbColor`
 - `absBlacken(hwb: HwbColor, amount = 0.1): HwbColor`
 - `absBrighten(rgb: RgbColor, amount = 0.1): RgbColor`
-- `relDesaturate(hsl: HslColor, amount = 0.1): HslColor`
-- `relSaturate(hsl: HslColor, amount = 0.1): HslColor`
-- `relLighten(hsl: HslColor, amount = 0.1): HslColor`
-- `relDarken(hsl: HslColor, amount = 0.1): HslColor`
-- `relFadeIn(hsl: HslColor, amount = 0.1): HslColor`
-- `relFadeOut(hsl: HslColor, amount = 0.1): HslColor`
-- `relWhiten(hwb: HwbColor, amount = 0.1): HwbColor`
-- `relBlacken(hwb: HwbColor, amount = 0.1): HwbColor`
-- `relBrighten(rgb: RgbColor, amount = 0.1): RgbColor`
+- `relDesaturate(hsl: HslColor, ratio = 0.1): HslColor`
+- `relSaturate(hsl: HslColor, ratio = 0.1): HslColor`
+- `relLighten(hsl: HslColor, ratio = 0.1): HslColor`
+- `relDarken(hsl: HslColor, ratio = 0.1): HslColor`
+- `relFadeIn(hsl: HslColor, ratio = 0.1): HslColor`
+- `relFadeOut(hsl: HslColor, ratio = 0.1): HslColor`
+- `relWhiten(hwb: HwbColor, ratio = 0.1): HwbColor`
+- `relBlacken(hwb: HwbColor, ratio = 0.1): HwbColor`
+- `relBrighten(rgb: RgbColor, ratio = 0.1): RgbColor`
 - `spin(hsl: HslColor, amount: number): HslColor`
 - `mixColors(a: RgbColor, b: RgbColor, amount = 0.5): RgbColor`
 - `tint(rgb: RgbColor, amount = 0.5): RgbColor`
