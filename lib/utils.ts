@@ -54,6 +54,29 @@ export function contrastLevel(contrastRatio: number): number {
 }
 
 /**
+ * Find best contrast color.
+ *
+ * @param a
+ * @param bs
+ * @returns RGB color
+ */
+export function findBestContrast(a: RgbColor, bs: RgbColor[]): RgbColor | undefined {
+  let bestColor: RgbColor | undefined;
+  let bestContrast = 0;
+
+  for (let i = 0; i < bs.length; i++) {
+    const b = bs[i];
+    const c = contrast(a, b);
+    if (c > bestContrast) {
+      bestContrast = c;
+      bestColor = b;
+    }
+  }
+
+  return bestColor;
+}
+
+/**
  * Brightness.
  *
  * http://www.w3.org/TR/AERT#color-contrast

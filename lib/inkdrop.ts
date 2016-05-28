@@ -5,5 +5,5 @@ export {absDesaturate, absSaturate, absLighten, absDarken, absFadeIn, absFadeOut
   relDesaturate, relSaturate, relLighten, relDarken, relFadeIn, relFadeOut, relWhiten, relBlacken, relBrighten,
   spin, greyscale, greyscaleHsl, mix, negate, tint, shade} from "./transform";
 export {complement, triad, tetrad, splitComplement, analogous, monochromatic} from "./combination";
-export {luminance, contrast, contrastLevel, brightness, isDark, isLight} from "./utils";
+export {luminance, contrast, contrastLevel, findBestContrast, brightness, isDark, isLight} from "./utils";
 export {formatRgbToHex, formatRgbToString, formatHslToString, formatHsvToString} from "./format";
