@@ -11,27 +11,13 @@ function clamp01(v: number): number {
 }
 
 /**
- * Negate.
- *
- * @param rgb RGB color
- * @return RGB color
- */
-export function negate(rgb: RgbColor): RgbColor {
-  return new RgbColor(
-    1 - rgb.r,
-    1 - rgb.g,
-    1 - rgb.b,
-    rgb.a);
-}
-
-/**
  * Desaturate.
  *
  * @param hsl HSL color
  * @param smount value should be normalized [0, 1]
  * @returns HSL color
  */
-export function desaturate(hsl: HslColor, amount = 0.1): HslColor {
+export function absDesaturate(hsl: HslColor, amount = 0.1): HslColor {
   return new HslColor(
     hsl.h,
     clamp01(hsl.s - amount),
@@ -46,35 +32,10 @@ export function desaturate(hsl: HslColor, amount = 0.1): HslColor {
  * @param amount value should be normalized [0, 1]
  * @returns HSL color
  */
-export function saturate(hsl: HslColor, amount = 0.1): HslColor {
+export function absSaturate(hsl: HslColor, amount = 0.1): HslColor {
   return new HslColor(
     hsl.h,
     clamp01(hsl.s + amount),
-    hsl.l,
-    hsl.a);
-}
-
-/**
- * Greyscale.
- *
- * @param rgb RGB color
- * @returns RGB color
- */
-export function greyscaleRgb(rgb: RgbColor): RgbColor {
-  const v = (rgb.r * 0.3) + (rgb.g * 0.59) + (rgb.g * 0.11);
-  return new RgbColor(v, v, v, rgb.a);
-}
-
-/**
- * Greyscale.
- *
- * @param hsl HSL color
- * @returns HSL color
- */
-export function greyscaleHsl(hsl: HslColor): HslColor {
-  return new HslColor(
-    hsl.h,
-    0,
     hsl.l,
     hsl.a);
 }
@@ -86,7 +47,7 @@ export function greyscaleHsl(hsl: HslColor): HslColor {
  * @param amount value should be normalized [0, 1]
  * @returns HSL color
  */
-export function lighten(hsl: HslColor, amount = 0.1): HslColor {
+export function absLighten(hsl: HslColor, amount = 0.1): HslColor {
   return new HslColor(
     hsl.h,
     hsl.s,
@@ -101,7 +62,7 @@ export function lighten(hsl: HslColor, amount = 0.1): HslColor {
  * @param amount value should be normalized [0, 1]
  * @returns HSL color
  */
-export function darken(hsl: HslColor, amount = 0.1): HslColor {
+export function absDarken(hsl: HslColor, amount = 0.1): HslColor {
   return new HslColor(
     hsl.h,
     hsl.s,
@@ -116,7 +77,7 @@ export function darken(hsl: HslColor, amount = 0.1): HslColor {
  * @param amount value should be normalized [0, 1]
  * @returns HSL color
  */
-export function fadeIn(hsl: HslColor, amount = 0.1): HslColor {
+export function absFadeIn(hsl: HslColor, amount = 0.1): HslColor {
   return new HslColor(
     hsl.h,
     hsl.s,
@@ -131,7 +92,7 @@ export function fadeIn(hsl: HslColor, amount = 0.1): HslColor {
  * @param amount value should be normalized [0, 1]
  * @returns HSL color
  */
-export function fadeOut(hsl: HslColor, amount = 0.1): HslColor {
+export function absFadeOut(hsl: HslColor, amount = 0.1): HslColor {
   return new HslColor(
     hsl.h,
     hsl.s,
@@ -145,7 +106,7 @@ export function fadeOut(hsl: HslColor, amount = 0.1): HslColor {
  * @param hwb HWB color
  * @returns HWB color
  */
-export function whiten(hwb: HwbColor, amount = 0.1): HwbColor {
+export function absWhiten(hwb: HwbColor, amount = 0.1): HwbColor {
   return new HwbColor(
     hwb.h,
     clamp01(hwb.w + amount),
@@ -159,7 +120,7 @@ export function whiten(hwb: HwbColor, amount = 0.1): HwbColor {
  * @param hwb HWB color
  * @returns HWB color
  */
-export function blacken(hwb: HwbColor, amount = 0.1): HwbColor {
+export function absBlacken(hwb: HwbColor, amount = 0.1): HwbColor {
   return new HwbColor(
     hwb.h,
     hwb.w,
@@ -174,11 +135,146 @@ export function blacken(hwb: HwbColor, amount = 0.1): HwbColor {
  * @param amount value should be normalized [0, 1]
  * @returns RGB color
  */
-export function brighten(rgb: RgbColor, amount = 0.1): RgbColor {
+export function absBrighten(rgb: RgbColor, amount = 0.1): RgbColor {
   return new RgbColor(
     clamp01(rgb.r + amount),
     clamp01(rgb.g + amount),
     clamp01(rgb.b + amount),
+    rgb.a);
+}
+
+/**
+ * Desaturate.
+ *
+ * @param hsl HSL color
+ * @param ratio value should be normalized [0, 1]
+ * @returns HSL color
+ */
+export function relDesaturate(hsl: HslColor, ratio = 0.1): HslColor {
+  return new HslColor(
+    hsl.h,
+    clamp01(hsl.s - (hsl.s * ratio)),
+    hsl.l,
+    hsl.a);
+}
+
+/**
+ * Saturate.
+ *
+ * @param hsl HSL color
+ * @param ratio value should be normalized [0, 1]
+ * @returns HSL color
+ */
+export function relSaturate(hsl: HslColor, ratio = 0.1): HslColor {
+  return new HslColor(
+    hsl.h,
+    clamp01(hsl.s + (hsl.s * ratio)),
+    hsl.l,
+    hsl.a);
+}
+
+/**
+ * Lighten.
+ *
+ * @param hsl HSL color
+ * @param ratio value should be normalized [0, 1]
+ * @returns HSL color
+ */
+export function relLighten(hsl: HslColor, ratio = 0.1): HslColor {
+  return new HslColor(
+    hsl.h,
+    hsl.s,
+    clamp01(hsl.l + (hsl.l * ratio)),
+    hsl.a);
+}
+
+/**
+ * Darken.
+ *
+ * @param hsl HSL color
+ * @param ratio value should be normalized [0, 1]
+ * @returns HSL color
+ */
+export function relDarken(hsl: HslColor, ratio = 0.1): HslColor {
+  return new HslColor(
+    hsl.h,
+    hsl.s,
+    clamp01(hsl.l - (hsl.l * ratio)),
+    hsl.a);
+}
+
+/**
+ * Fade In.
+ *
+ * @param hsl HSL color
+ * @param ratio value should be normalized [0, 1]
+ * @returns HSL color
+ */
+export function relFadeIn(hsl: HslColor, ratio = 0.1): HslColor {
+  return new HslColor(
+    hsl.h,
+    hsl.s,
+    hsl.l,
+    clamp01(hsl.a + (hsl.a * ratio)));
+}
+
+/**
+ * Fade Out.
+ *
+ * @param hsl HSL color
+ * @param ratio value should be normalized [0, 1]
+ * @returns HSL color
+ */
+export function relFadeOut(hsl: HslColor, ratio = 0.1): HslColor {
+  return new HslColor(
+    hsl.h,
+    hsl.s,
+    hsl.l,
+    clamp01(hsl.a - (hsl.a * ratio)));
+}
+
+/**
+ * Whiten.
+ *
+ * @param hwb HWB color
+ * @param ratio value should be normalized [0, 1]
+ * @returns HWB color
+ */
+export function relWhiten(hwb: HwbColor, ratio = 0.1): HwbColor {
+  return new HwbColor(
+    hwb.h,
+    clamp01(hwb.w + (hwb.w * ratio)),
+    hwb.b,
+    hwb.a);
+}
+
+/**
+ * Blacken.
+ *
+ * @param hwb HWB color
+ * @param ratio value should be normalized [0, 1]
+ * @returns HWB color
+ */
+export function relBlacken(hwb: HwbColor, ratio = 0.1): HwbColor {
+  return new HwbColor(
+    hwb.h,
+    hwb.w,
+    clamp01(hwb.b + (hwb.b * ratio)),
+    hwb.a);
+}
+
+/**
+ * Brighten.
+ *
+ * @param rgb RGB color
+ * @param ratio value should be normalized [0, 1]
+ * @returns RGB color
+ */
+export function relBrighten(rgb: RgbColor, ratio = 0.1): RgbColor {
+  return new RgbColor(
+    clamp01(rgb.r + (rgb.r * ratio)),
+    clamp01(rgb.g + (rgb.g * ratio)),
+    clamp01(rgb.b + (rgb.b * ratio)),
     rgb.a);
 }
 
@@ -222,11 +318,67 @@ export function mixColors(a: RgbColor, b: RgbColor, amount = 0.5): RgbColor {
     b.a * amount + a.a * (1 - amount));
 }
 
+/**
+ * Tint.
+ *
+ * Mix with white color.
+ *
+ * @param rgb RGB color
+ * @param amount
+ * @return RGB color
+ */
 export function tint(rgb: RgbColor, amount?: number): RgbColor {
   return mixColors(WhiteRgbColor, rgb, amount);
 }
 
+/**
+ * Shade.
+ *
+ * Mix with black color.
+ *
+ * @param rgb RGB color
+ * @param amount
+ * @return RGB color
+ */
 export function shade(rgb: RgbColor, amount?: number): RgbColor {
   return mixColors(BlackRgbColor, rgb, amount);
 }
 
+/**
+ * Negate.
+ *
+ * @param rgb RGB color
+ * @return RGB color
+ */
+export function negate(rgb: RgbColor): RgbColor {
+  return new RgbColor(
+    1 - rgb.r,
+    1 - rgb.g,
+    1 - rgb.b,
+    rgb.a);
+}
+
+/**
+ * Greyscale.
+ *
+ * @param rgb RGB color
+ * @returns RGB color
+ */
+export function greyscaleRgb(rgb: RgbColor): RgbColor {
+  const v = (rgb.r * 0.3) + (rgb.g * 0.59) + (rgb.g * 0.11);
+  return new RgbColor(v, v, v, rgb.a);
+}
+
+/**
+ * Greyscale.
+ *
+ * @param hsl HSL color
+ * @returns HSL color
+ */
+export function greyscaleHsl(hsl: HslColor): HslColor {
+  return new HslColor(
+    hsl.h,
+    0,
+    hsl.l,
+    hsl.a);
+}

@@ -1,31 +1,32 @@
 import {RgbColor, HslColor} from "../lib/color";
-import {desaturate, saturate, greyscaleHsl, lighten, darken, brighten, spin, mixColors} from "../lib/transform";
+import {absDesaturate, absSaturate, greyscaleHsl, absLighten, absDarken, absBrighten, spin,
+  mixColors} from "../lib/transform";
 
 describe("transform", () => {
   describe("desaturate", () => {
     it("should desaturate hsl[180, 50, 50] by 0.2", () => {
-      const hsl = desaturate(new HslColor(0.5, 0.5, 0.5), 0.2);
+      const hsl = absDesaturate(new HslColor(0.5, 0.5, 0.5), 0.2);
       expect(hsl.h).toBe(0.5);
       expect(hsl.s).toBeCloseTo(0.3, 2);
       expect(hsl.l).toBe(0.5);
     });
 
     it("should desaturate hsl[180, 50, 50] by 0.6", () => {
-      const hsl = desaturate(new HslColor(0.5, 0.5, 0.5), 0.6);
+      const hsl = absDesaturate(new HslColor(0.5, 0.5, 0.5), 0.6);
       expect(hsl.h).toBe(0.5);
       expect(hsl.s).toBe(0);
       expect(hsl.l).toBe(0.5);
     });
 
     it("should desaturate hsl[180, 50, 50] by -0.6", () => {
-      const hsl = desaturate(new HslColor(0.5, 0.5, 0.5), -0.6);
+      const hsl = absDesaturate(new HslColor(0.5, 0.5, 0.5), -0.6);
       expect(hsl.h).toBe(0.5);
       expect(hsl.s).toBe(1);
       expect(hsl.l).toBe(0.5);
     });
 
     it("should have default desaturation value 0.1", () => {
-      const hsl = desaturate(new HslColor(0.5, 0.5, 0.5));
+      const hsl = absDesaturate(new HslColor(0.5, 0.5, 0.5));
       expect(hsl.h).toBe(0.5);
       expect(hsl.s).toBeCloseTo(0.4, 2);
       expect(hsl.l).toBe(0.5);
@@ -34,28 +35,28 @@ describe("transform", () => {
 
   describe("saturate", () => {
     it("should saturate hsl[180, 50, 50] by 0.2", () => {
-      const hsl = saturate(new HslColor(0.5, 0.5, 0.5), 0.2);
+      const hsl = absSaturate(new HslColor(0.5, 0.5, 0.5), 0.2);
       expect(hsl.h).toBe(0.5);
       expect(hsl.s).toBeCloseTo(0.7, 2);
       expect(hsl.l).toBe(0.5);
     });
 
     it("should saturate hsl[180, 50, 50] by 0.6", () => {
-      const hsl = saturate(new HslColor(0.5, 0.5, 0.5), 0.6);
+      const hsl = absSaturate(new HslColor(0.5, 0.5, 0.5), 0.6);
       expect(hsl.h).toBe(0.5);
       expect(hsl.s).toBe(1);
       expect(hsl.l).toBe(0.5);
     });
 
     it("should saturate hsl[180, 50, 50] by -0.6", () => {
-      const hsl = saturate(new HslColor(0.5, 0.5, 0.5), -0.6);
+      const hsl = absSaturate(new HslColor(0.5, 0.5, 0.5), -0.6);
       expect(hsl.h).toBe(0.5);
       expect(hsl.s).toBe(0);
       expect(hsl.l).toBe(0.5);
     });
 
     it("should have default saturation value 0.1", () => {
-      const hsl = saturate(new HslColor(0.5, 0.5, 0.5));
+      const hsl = absSaturate(new HslColor(0.5, 0.5, 0.5));
       expect(hsl.h).toBe(0.5);
       expect(hsl.s).toBeCloseTo(0.6, 2);
       expect(hsl.l).toBe(0.5);
@@ -73,28 +74,28 @@ describe("transform", () => {
 
   describe("lighten", () => {
     it("should lighten hsl[180, 50, 50] by 0.2", () => {
-      const hsl = lighten(new HslColor(0.5, 0.5, 0.5), 0.2);
+      const hsl = absLighten(new HslColor(0.5, 0.5, 0.5), 0.2);
       expect(hsl.h).toBe(0.5);
       expect(hsl.s).toBe(0.5);
       expect(hsl.l).toBeCloseTo(0.7, 2);
     });
 
     it("should lighten hsl[180, 50, 50] by 0.6", () => {
-      const hsl = lighten(new HslColor(0.5, 0.5, 0.5), 0.6);
+      const hsl = absLighten(new HslColor(0.5, 0.5, 0.5), 0.6);
       expect(hsl.h).toBe(0.5);
       expect(hsl.s).toBe(0.5);
       expect(hsl.l).toBe(1);
     });
 
     it("should lighten hsl[180, 50, 50] by -0.6", () => {
-      const hsl = lighten(new HslColor(0.5, 0.5, 0.5), -0.6);
+      const hsl = absLighten(new HslColor(0.5, 0.5, 0.5), -0.6);
       expect(hsl.h).toBe(0.5);
       expect(hsl.s).toBe(0.5);
       expect(hsl.l).toBe(0);
     });
 
     it("should have default lighten value 0.1", () => {
-      const hsl = lighten(new HslColor(0.5, 0.5, 0.5));
+      const hsl = absLighten(new HslColor(0.5, 0.5, 0.5));
       expect(hsl.h).toBe(0.5);
       expect(hsl.s).toBe(0.5);
       expect(hsl.l).toBeCloseTo(0.6, 2);
@@ -103,28 +104,28 @@ describe("transform", () => {
 
   describe("darken", () => {
     it("should darken hsl[180, 50, 50] by 0.2", () => {
-      const hsl = darken(new HslColor(0.5, 0.5, 0.5), 0.2);
+      const hsl = absDarken(new HslColor(0.5, 0.5, 0.5), 0.2);
       expect(hsl.h).toBe(0.5);
       expect(hsl.s).toBe(0.5);
       expect(hsl.l).toBeCloseTo(0.3, 2);
     });
 
     it("should darken hsl[180, 50, 50] by 0.6", () => {
-      const hsl = darken(new HslColor(0.5, 0.5, 0.5), 0.6);
+      const hsl = absDarken(new HslColor(0.5, 0.5, 0.5), 0.6);
       expect(hsl.h).toBe(0.5);
       expect(hsl.s).toBe(0.5);
       expect(hsl.l).toBe(0);
     });
 
     it("should darken hsl[180, 50, 50] by -0.6", () => {
-      const hsl = darken(new HslColor(0.5, 0.5, 0.5), -0.6);
+      const hsl = absDarken(new HslColor(0.5, 0.5, 0.5), -0.6);
       expect(hsl.h).toBe(0.5);
       expect(hsl.s).toBe(0.5);
       expect(hsl.l).toBe(1);
     });
 
     it("should have default darken value 0.1", () => {
-      const hsl = darken(new HslColor(0.5, 0.5, 0.5));
+      const hsl = absDarken(new HslColor(0.5, 0.5, 0.5));
       expect(hsl.h).toBe(0.5);
       expect(hsl.s).toBe(0.5);
       expect(hsl.l).toBeCloseTo(0.4, 2);
@@ -170,28 +171,28 @@ describe("transform", () => {
 
   describe("brighten", () => {
     it("should brighten rgb[128, 128, 128] by 0.2", () => {
-      const rgb = brighten(new RgbColor(0.5, 0.5, 0.5), 0.2);
+      const rgb = absBrighten(new RgbColor(0.5, 0.5, 0.5), 0.2);
       expect(rgb.r).toBeCloseTo(0.7, 2);
       expect(rgb.g).toBeCloseTo(0.7, 2);
       expect(rgb.b).toBeCloseTo(0.7, 2);
     });
 
     it("should brighten rgb[128, 128, 128] by 0.6", () => {
-      const rgb = brighten(new RgbColor(0.5, 0.5, 0.5), 0.6);
+      const rgb = absBrighten(new RgbColor(0.5, 0.5, 0.5), 0.6);
       expect(rgb.r).toBe(1);
       expect(rgb.g).toBe(1);
       expect(rgb.b).toBe(1);
     });
 
     it("should brighten rgb[128, 128, 128] by -0.6", () => {
-      const rgb = brighten(new RgbColor(0.5, 0.5, 0.5), -0.6);
+      const rgb = absBrighten(new RgbColor(0.5, 0.5, 0.5), -0.6);
       expect(rgb.r).toBe(0);
       expect(rgb.g).toBe(0);
       expect(rgb.b).toBe(0);
     });
 
     it("should have default brighten value 0.1", () => {
-      const rgb = brighten(new RgbColor(0.5, 0.5, 0.5));
+      const rgb = absBrighten(new RgbColor(0.5, 0.5, 0.5));
       expect(rgb.r).toBeCloseTo(0.6, 2);
       expect(rgb.g).toBeCloseTo(0.6, 2);
       expect(rgb.b).toBeCloseTo(0.6, 2);

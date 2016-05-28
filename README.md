@@ -54,22 +54,31 @@ All color models are using values with a range `[0, 1]` for all properties.
 
 ## Transformation functions
 
-- `negate(rgb: RgbColor): RgbColor`
-- `desaturate(hsl: HslColor, amount = 0.1): HslColor`
-- `saturate(hsl: HslColor, amount = 0.1): HslColor`
-- `greyscaleRgb(rgb: RgbColor): RgbColor`
-- `greyscaleHsl(hsl: HslColor): HslColor`
-- `lighten(hsl: HslColor, amount = 0.1): HslColor`
-- `darken(hsl: HslColor, amount = 0.1): HslColor`
-- `fadeIn(hsl: HslColor, amount = 0.1): HslColor`
-- `fadeOut(hsl: HslColor, amount = 0.1): HslColor`
-- `whiten(hwb: HwbColor, amount = 0.1): HwbColor`
-- `blacken(hwb: HwbColor, amount = 0.1): HwbColor`
-- `brighten(rgb: RgbColor, amount = 0.1): RgbColor`
+- `absDesaturate(hsl: HslColor, amount = 0.1): HslColor`
+- `absSaturate(hsl: HslColor, amount = 0.1): HslColor`
+- `absLighten(hsl: HslColor, amount = 0.1): HslColor`
+- `absDarken(hsl: HslColor, amount = 0.1): HslColor`
+- `absFadeIn(hsl: HslColor, amount = 0.1): HslColor`
+- `absFadeOut(hsl: HslColor, amount = 0.1): HslColor`
+- `absWhiten(hwb: HwbColor, amount = 0.1): HwbColor`
+- `absBlacken(hwb: HwbColor, amount = 0.1): HwbColor`
+- `absBrighten(rgb: RgbColor, amount = 0.1): RgbColor`
+- `relDesaturate(hsl: HslColor, amount = 0.1): HslColor`
+- `relSaturate(hsl: HslColor, amount = 0.1): HslColor`
+- `relLighten(hsl: HslColor, amount = 0.1): HslColor`
+- `relDarken(hsl: HslColor, amount = 0.1): HslColor`
+- `relFadeIn(hsl: HslColor, amount = 0.1): HslColor`
+- `relFadeOut(hsl: HslColor, amount = 0.1): HslColor`
+- `relWhiten(hwb: HwbColor, amount = 0.1): HwbColor`
+- `relBlacken(hwb: HwbColor, amount = 0.1): HwbColor`
+- `relBrighten(rgb: RgbColor, amount = 0.1): RgbColor`
 - `spin(hsl: HslColor, amount: number): HslColor`
 - `mixColors(a: RgbColor, b: RgbColor, amount = 0.5): RgbColor`
-- `tint(rgb: RgbColor): RgbColor`
-- `shade(rgb: RgbColor): RgbColor`
+- `tint(rgb: RgbColor, amount = 0.5): RgbColor`
+- `shade(rgb: RgbColor, amount = 0.5): RgbColor`
+- `negate(rgb: RgbColor): RgbColor`
+- `greyscaleRgb(rgb: RgbColor): RgbColor`
+- `greyscaleHsl(hsl: HslColor): HslColor`
 
 ## Combination functions
 
