@@ -11,6 +11,20 @@ function clamp01(v: number): number {
 }
 
 /**
+ * Negate.
+ *
+ * @param rgb RGB color
+ * @return RGB color
+ */
+export function negate(rgb: RgbColor): RgbColor {
+  return new RgbColor(
+    1 - rgb.r,
+    1 - rgb.g,
+    1 - rgb.b,
+    rgb.a);
+}
+
+/**
  * Desaturate.
  *
  * @param hsl HSL color

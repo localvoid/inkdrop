@@ -47,12 +47,14 @@ All color models are using values with a range `[0, 1]` for all properties.
 
 - `luminance(rgb: RgbColor): number`
 - `contrast(a: RgbColor, b: RgbColor): number`
+- `contrastLevel(contrastRatio: number): number`
 - `brightness(rgb: RgbColor): number`
 - `isDark(rgb: RgbColor): boolean`
 - `isLight(rgb: RgbColor): boolean`
 
 ## Transformation functions
 
+- `negate(rgb: RgbColor): RgbColor`
 - `desaturate(hsl: HslColor, amount = 0.1): HslColor`
 - `saturate(hsl: HslColor, amount = 0.1): HslColor`
 - `greyscale(hsl: HslColor): HslColor`

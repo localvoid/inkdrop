@@ -38,6 +38,22 @@ export function contrast(a: RgbColor, b: RgbColor): number {
 }
 
 /**
+ * Contrast level: "AA", "AAA"
+ *
+ * @param contrastRatio
+ * @returns contrast level with a range: [0, 2]. 2 = "AAA", 1 = "AA"
+ */
+export function contrastLevel(contrastRatio: number): number {
+  if (contrastRatio >= 7.1) {
+    return 2;
+  }
+  if (contrastRatio >= 4.5) {
+    return 1;
+  }
+  return 0;
+}
+
+/**
  * Brightness.
  *
  * http://www.w3.org/TR/AERT#color-contrast
