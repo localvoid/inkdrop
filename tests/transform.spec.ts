@@ -1,7 +1,7 @@
 import {RgbColor, HslColor, HwbColor} from "../lib/color";
 import {absDesaturate, absSaturate, absLighten, absDarken, absFadeIn, absFadeOut, absWhiten, absBlacken, absBrighten,
   relDesaturate, relSaturate, relLighten, relDarken, relFadeIn, relFadeOut, relWhiten, relBlacken, relBrighten,
-  spin, mixColors, tint, shade, negate, greyscaleHsl, greyscaleRgb} from "../lib/transform";
+  spin, mix, tint, shade, negate, greyscaleHsl, greyscale} from "../lib/transform";
 
 describe("transform", () => {
   describe("absDesaturate", () => {
@@ -601,7 +601,7 @@ describe("transform", () => {
     it("should mix rgb[64, 64, 64] and rgb[128, 128, 128] and get rgb[96, 96, 96]", () => {
       const a = new RgbColor(0.25, 0.25, 0.25);
       const b = new RgbColor(0.5, 0.5, 0.5);
-      const rgb = mixColors(a, b);
+      const rgb = mix(a, b);
 
       expect(Math.round(rgb.r * 255)).toBe(96);
       expect(Math.round(rgb.g * 255)).toBe(96);
@@ -612,7 +612,7 @@ describe("transform", () => {
     it("should mix rgb[64, 64, 64, 0.5] and rgb[128, 128, 128] and get rgb[80, 80, 80, 0.75]", () => {
       const a = new RgbColor(0.25, 0.25, 0.25, 0.5);
       const b = new RgbColor(0.5, 0.5, 0.5);
-      const rgb = mixColors(a, b);
+      const rgb = mix(a, b);
 
       expect(Math.round(rgb.r * 255)).toBe(80);
       expect(Math.round(rgb.g * 255)).toBe(80);
@@ -657,7 +657,7 @@ describe("transform", () => {
     });
 
     it("should make rgb[128, 255, 255] greyscale", () => {
-      const rgb = greyscaleRgb(new RgbColor(0.5, 1, 1));
+      const rgb = greyscale(new RgbColor(0.5, 1, 1));
       expect(Math.round(rgb.r * 255)).toBe(217);
       expect(Math.round(rgb.g * 255)).toBe(217);
       expect(Math.round(rgb.b * 255)).toBe(217);

@@ -301,7 +301,7 @@ export function spin(hsl: HslColor, amount: number): HslColor {
  * @param amount
  * @returns RGB color
  */
-export function mixColors(a: RgbColor, b: RgbColor, amount = 0.5): RgbColor {
+export function mix(a: RgbColor, b: RgbColor, amount = 0.5): RgbColor {
   const w = (amount * 2) - 1;
   const alpha = a.a - b.a;
   const wa = w * alpha;
@@ -328,7 +328,7 @@ export function mixColors(a: RgbColor, b: RgbColor, amount = 0.5): RgbColor {
  * @return RGB color
  */
 export function tint(rgb: RgbColor, amount?: number): RgbColor {
-  return mixColors(WhiteRgbColor, rgb, amount);
+  return mix(WhiteRgbColor, rgb, amount);
 }
 
 /**
@@ -341,7 +341,7 @@ export function tint(rgb: RgbColor, amount?: number): RgbColor {
  * @return RGB color
  */
 export function shade(rgb: RgbColor, amount?: number): RgbColor {
-  return mixColors(BlackRgbColor, rgb, amount);
+  return mix(BlackRgbColor, rgb, amount);
 }
 
 /**
@@ -364,7 +364,7 @@ export function negate(rgb: RgbColor): RgbColor {
  * @param rgb RGB color
  * @returns RGB color
  */
-export function greyscaleRgb(rgb: RgbColor): RgbColor {
+export function greyscale(rgb: RgbColor): RgbColor {
   const v = (rgb.r * 0.3) + (rgb.g * 0.59) + (rgb.g * 0.11);
   return new RgbColor(v, v, v, rgb.a);
 }

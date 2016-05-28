@@ -62,7 +62,6 @@ All color models are using values with a range `[0, 1]` for all properties.
 - `absFadeOut(hsl: HslColor, amount = 0.1): HslColor`
 - `absWhiten(hwb: HwbColor, amount = 0.1): HwbColor`
 - `absBlacken(hwb: HwbColor, amount = 0.1): HwbColor`
-- `absBrighten(rgb: RgbColor, amount = 0.1): RgbColor`
 - `relDesaturate(hsl: HslColor, ratio = 0.1): HslColor`
 - `relSaturate(hsl: HslColor, ratio = 0.1): HslColor`
 - `relLighten(hsl: HslColor, ratio = 0.1): HslColor`
@@ -71,14 +70,12 @@ All color models are using values with a range `[0, 1]` for all properties.
 - `relFadeOut(hsl: HslColor, ratio = 0.1): HslColor`
 - `relWhiten(hwb: HwbColor, ratio = 0.1): HwbColor`
 - `relBlacken(hwb: HwbColor, ratio = 0.1): HwbColor`
-- `relBrighten(rgb: RgbColor, ratio = 0.1): RgbColor`
 - `spin(hsl: HslColor, amount: number): HslColor`
-- `mixColors(a: RgbColor, b: RgbColor, amount = 0.5): RgbColor`
+- `mix(a: RgbColor, b: RgbColor, amount = 0.5): RgbColor`
 - `tint(rgb: RgbColor, amount = 0.5): RgbColor`
 - `shade(rgb: RgbColor, amount = 0.5): RgbColor`
 - `negate(rgb: RgbColor): RgbColor`
-- `greyscaleRgb(rgb: RgbColor): RgbColor`
-- `greyscaleHsl(hsl: HslColor): HslColor`
+- `greyscale(rgb: RgbColor): RgbColor`
 
 ## Combination functions
 
