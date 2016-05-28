@@ -110,6 +110,36 @@ export function darken(hsl: HslColor, amount = 0.1): HslColor {
 }
 
 /**
+ * Fade In.
+ *
+ * @param hsl HSL color
+ * @param amount value should be normalized [0, 1]
+ * @returns HSL color
+ */
+export function fadeIn(hsl: HslColor, amount = 0.1): HslColor {
+  return new HslColor(
+    hsl.h,
+    hsl.s,
+    hsl.l,
+    clamp01(hsl.a + amount));
+}
+
+/**
+ * Fade Out.
+ *
+ * @param hsl HSL color
+ * @param amount value should be normalized [0, 1]
+ * @returns HSL color
+ */
+export function fadeOut(hsl: HslColor, amount = 0.1): HslColor {
+  return new HslColor(
+    hsl.h,
+    hsl.s,
+    hsl.l,
+    clamp01(hsl.a - amount));
+}
+
+/**
  * Whiten.
  *
  * @param hwb HWB color

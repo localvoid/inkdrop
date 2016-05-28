@@ -61,6 +61,8 @@ All color models are using values with a range `[0, 1]` for all properties.
 - `greyscaleHsl(hsl: HslColor): HslColor`
 - `lighten(hsl: HslColor, amount = 0.1): HslColor`
 - `darken(hsl: HslColor, amount = 0.1): HslColor`
+- `fadeIn(hsl: HslColor, amount = 0.1): HslColor`
+- `fadeOut(hsl: HslColor, amount = 0.1): HslColor`
 - `whiten(hwb: HwbColor, amount = 0.1): HwbColor`
 - `blacken(hwb: HwbColor, amount = 0.1): HwbColor`
 - `brighten(rgb: RgbColor, amount = 0.1): RgbColor`
