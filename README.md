@@ -78,6 +78,19 @@ All color models are using values with a range `[0, 1]` for all properties.
 - `negate(rgb: RgbColor): RgbColor`
 - `greyscale(rgb: RgbColor): RgbColor`
 
+## Blend functions
+
+- `blend(c1: RgbColor, c2: RgbColor, mode: (a: number, b: number) => number): RgbColor`
+- `blendMultiply(a: RgbColor, b: RgbColor): RgbColor`
+- `blendScreen(a: RgbColor, b: RgbColor): RgbColor`
+- `blendOverlay(a: RgbColor, b: RgbColor): RgbColor`
+- `blendSoftlight(a: RgbColor, b: RgbColor): RgbColor`
+- `blendHardlight(a: RgbColor, b: RgbColor): RgbColor`
+- `blendDifference(a: RgbColor, b: RgbColor): RgbColor`
+- `blendExclusion(a: RgbColor, b: RgbColor): RgbColor`
+- `blendAverage(a: RgbColor, b: RgbColor): RgbColor`
+- `blendNegation(a: RgbColor, b: RgbColor): RgbColor`
+
 ## Combination functions
 
 - `complement(hsl: HslColor): HslColor`

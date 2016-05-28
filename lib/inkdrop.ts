@@ -7,3 +7,5 @@ export {absDesaturate, absSaturate, absLighten, absDarken, absFadeIn, absFadeOut
 export {complement, triad, tetrad, splitComplement, analogous, monochromatic} from "./combination";
 export {luminance, contrast, contrastLevel, findBestContrast, brightness, isDark, isLight} from "./utils";
 export {formatRgbToHex, formatRgbToString, formatHslToString, formatHsvToString} from "./format";
+export {blend, blendMultiply, blendScreen, blendOverlay, blendSoftlight, blendHardlight, blendDifference,
+  blendExclusion, blendAverage, blendNegation} from "./blend";
