@@ -1,4 +1,4 @@
-import {RgbColor, HslColor} from "./color";
+import {RgbColor, HslColor, HwbColor} from "./color";
 
 function clamp01(v: number): number {
   if (v <= 0) {
@@ -57,10 +57,21 @@ export function saturate(hsl: HslColor, amount = 0.1): HslColor {
 /**
  * Greyscale.
  *
+ * @param rgb RGB color
+ * @returns RGB color
+ */
+export function greyscaleRgb(rgb: RgbColor): RgbColor {
+  const v = (rgb.r * 0.3) + (rgb.g * 0.59) + (rgb.g * 0.11);
+  return new RgbColor(v, v, v, rgb.a);
+}
+
+/**
+ * Greyscale.
+ *
  * @param hsl HSL color
  * @returns HSL color
  */
-export function greyscale(hsl: HslColor): HslColor {
+export function greyscaleHsl(hsl: HslColor): HslColor {
   return new HslColor(
     hsl.h,
     1,
@@ -96,6 +107,34 @@ export function darken(hsl: HslColor, amount = 0.1): HslColor {
     hsl.s,
     clamp01(hsl.l - amount),
     hsl.a);
+}
+
+/**
+ * Whiten.
+ *
+ * @param hwb HWB color
+ * @returns HWB color
+ */
+export function whiten(hwb: HwbColor, amount = 0.1): HwbColor {
+  return new HwbColor(
+    hwb.h,
+    clamp01(hwb.w + amount),
+    hwb.b,
+    hwb.a);
+}
+
+/**
+ * Blacken.
+ *
+ * @param hwb HWB color
+ * @returns HWB color
+ */
+export function blacken(hwb: HwbColor, amount = 0.1): HwbColor {
+  return new HwbColor(
+    hwb.h,
+    hwb.w,
+    clamp01(hwb.b + amount),
+    hwb.a);
 }
 
 /**

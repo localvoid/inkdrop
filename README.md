@@ -57,9 +57,12 @@ All color models are using values with a range `[0, 1]` for all properties.
 - `negate(rgb: RgbColor): RgbColor`
 - `desaturate(hsl: HslColor, amount = 0.1): HslColor`
 - `saturate(hsl: HslColor, amount = 0.1): HslColor`
-- `greyscale(hsl: HslColor): HslColor`
+- `greyscaleRgb(rgb: RgbColor): RgbColor`
+- `greyscaleHsl(hsl: HslColor): HslColor`
 - `lighten(hsl: HslColor, amount = 0.1): HslColor`
 - `darken(hsl: HslColor, amount = 0.1): HslColor`
+- `whiten(hwb: HwbColor, amount = 0.1): HwbColor`
+- `blacken(hwb: HwbColor, amount = 0.1): HwbColor`
 - `brighten(rgb: RgbColor, amount = 0.1): RgbColor`
 - `spin(hsl: HslColor, amount: number): HslColor`
 - `mixColors(a: RgbColor, b: RgbColor, amount = 0.5): RgbColor`

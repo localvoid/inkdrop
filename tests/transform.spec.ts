@@ -1,5 +1,5 @@
 import {RgbColor, HslColor} from "../lib/color";
-import {desaturate, saturate, greyscale, lighten, darken, brighten, spin, mixColors} from "../lib/transform";
+import {desaturate, saturate, greyscaleHsl, lighten, darken, brighten, spin, mixColors} from "../lib/transform";
 
 describe("transform", () => {
   describe("desaturate", () => {
@@ -64,7 +64,7 @@ describe("transform", () => {
 
   describe("greyscale", () => {
     it("should make hsl[180, 50, 50] greyscale", () => {
-      const hsl = greyscale(new HslColor(0.5, 0.5, 0.5));
+      const hsl = greyscaleHsl(new HslColor(0.5, 0.5, 0.5));
       expect(hsl.h).toBe(0.5);
       expect(hsl.s).toBe(1);
       expect(hsl.l).toBe(0.5);
