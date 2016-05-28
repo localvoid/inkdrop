@@ -46,6 +46,7 @@ All color models are using values with a range `[0, 1]` for all properties.
 ## Utils
 
 - `luminance(rgb: RgbColor): number`
+- `contrast(a: RgbColor, b: RgbColor): number`
 - `brightness(rgb: RgbColor): number`
 - `isDark(rgb: RgbColor): boolean`
 - `isLight(rgb: RgbColor): boolean`

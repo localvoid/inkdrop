@@ -21,6 +21,23 @@ export function luminance(rgb: RgbColor): number {
 }
 
 /**
+ * Contrast ratio.
+ *
+ * http://www.w3.org/TR/WCAG20/#contrast-ratiodef
+ *
+ * @param a RGB color
+ * @param b RGB color
+ * @returns contrast ratio with a range: [0, 1]
+ */
+export function contrast(a: RgbColor, b: RgbColor): number {
+  const l1 = luminance(a);
+  const l2 = luminance(b);
+  return (l1 > l2) ?
+    (l1 + 0.05) / (l2 + 0.05) :
+    (l2 + 0.05) / (l1 + 0.05);
+}
+
+/**
  * Brightness.
  *
  * http://www.w3.org/TR/AERT#color-contrast
