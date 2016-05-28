@@ -74,7 +74,7 @@ export function greyscaleRgb(rgb: RgbColor): RgbColor {
 export function greyscaleHsl(hsl: HslColor): HslColor {
   return new HslColor(
     hsl.h,
-    1,
+    0,
     hsl.l,
     hsl.a);
 }

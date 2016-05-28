@@ -66,7 +66,7 @@ describe("transform", () => {
     it("should make hsl[180, 50, 50] greyscale", () => {
       const hsl = greyscaleHsl(new HslColor(0.5, 0.5, 0.5));
       expect(hsl.h).toBe(0.5);
-      expect(hsl.s).toBe(1);
+      expect(hsl.s).toBe(0);
       expect(hsl.l).toBe(0.5);
     });
   });
