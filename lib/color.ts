@@ -140,3 +140,6 @@ export class CmykColor {
     return false;
   }
 }
+
+export const WhiteRgbColor = new RgbColor(255, 255, 255);
+export const BlackRgbColor = new RgbColor(0, 0, 0);

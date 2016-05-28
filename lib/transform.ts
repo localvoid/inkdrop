@@ -1,4 +1,4 @@
-import {RgbColor, HslColor, HwbColor} from "./color";
+import {RgbColor, HslColor, HwbColor, WhiteRgbColor, BlackRgbColor} from "./color";
 
 function clamp01(v: number): number {
   if (v <= 0) {
@@ -221,3 +221,12 @@ export function mixColors(a: RgbColor, b: RgbColor, amount = 0.5): RgbColor {
     b.b * aScale + a.b * bScale,
     b.a * amount + a.a * (1 - amount));
 }
+
+export function tint(rgb: RgbColor, amount?: number): RgbColor {
+  return mixColors(WhiteRgbColor, rgb, amount);
+}
+
+export function shade(rgb: RgbColor, amount?: number): RgbColor {
+  return mixColors(BlackRgbColor, rgb, amount);
+}
+

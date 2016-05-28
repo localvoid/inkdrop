@@ -68,6 +68,8 @@ All color models are using values with a range `[0, 1]` for all properties.
 - `brighten(rgb: RgbColor, amount = 0.1): RgbColor`
 - `spin(hsl: HslColor, amount: number): HslColor`
 - `mixColors(a: RgbColor, b: RgbColor, amount = 0.5): RgbColor`
+- `tint(rgb: RgbColor): RgbColor`
+- `shade(rgb: RgbColor): RgbColor`
 
 ## Combination functions
 
