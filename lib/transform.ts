@@ -306,16 +306,14 @@ export function mix(a: RgbColor, b: RgbColor, amount = 0.5): RgbColor {
   const alpha = a.a - b.a;
   const wa = w * alpha;
 
-  let aScale = (wa === -1) ? w : (w + alpha) / (1 + wa);
-  aScale = (aScale + 1) / 2;
-
+  const aScale = (((wa === -1) ? w : (w + alpha) / (1 + wa)) + 1) / 2;
   const bScale = 1 - aScale;
 
   return new RgbColor(
-    b.r * aScale + a.r * bScale,
-    b.g * aScale + a.g * bScale,
-    b.b * aScale + a.b * bScale,
-    b.a * amount + a.a * (1 - amount));
+    a.r * aScale + b.r * bScale,
+    a.g * aScale + b.g * bScale,
+    a.b * aScale + b.b * bScale,
+    a.a * amount + b.a * (1 - amount));
 }
 
 /**

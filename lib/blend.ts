@@ -11,19 +11,19 @@ export function blend(c1: RgbColor, c2: RgbColor, mode: (a: number, b: number) =
 
   c = mode(c1.r, c2.r);
   if (a !== 0) {
-    c = ((c2.a * c2.r) + (c1.a * ((c1.r - c2.a) * (c1.r + c2.r - c)))) / a;
+    c = ((c2.a * c2.r) + (c1.a * (c1.r - (c2.a * (c1.r + c2.r - c))))) / a;
   }
   const r = c;
 
   c = mode(c1.g, c2.g);
   if (a !== 0) {
-    c = ((c2.a * c2.g) + (c1.a * ((c1.g - c2.a) * (c1.g + c2.g - c)))) / a;
+    c = ((c2.a * c2.g) + (c1.a * (c1.g - (c2.a * (c1.g + c2.g - c))))) / a;
   }
   const g = c;
 
   c = mode(c1.b, c2.b);
   if (a !== 0) {
-    c = ((c2.a * c2.b) + (c1.a * ((c1.b - c2.a) * (c1.b + c2.b - c)))) / a;
+    c = ((c2.a * c2.b) + (c1.a * (c1.b - (c2.a * (c1.b + c2.b - c))))) / a;
   }
   const b = c;
 

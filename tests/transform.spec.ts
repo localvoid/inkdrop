@@ -609,15 +609,60 @@ describe("transform", () => {
       expect(rgb.a).toBe(1);
     });
 
-    it("should mix rgb[64, 64, 64, 0.5] and rgb[128, 128, 128] and get rgb[80, 80, 80, 0.75]", () => {
+
+    it("should mix rgb[64, 64, 64, 0.5] and rgb[128, 128, 128] and get rgb[112, 112, 112, 0.75]", () => {
       const a = new RgbColor(0.25, 0.25, 0.25, 0.5);
       const b = new RgbColor(0.5, 0.5, 0.5);
       const rgb = mix(a, b);
 
-      expect(Math.round(rgb.r * 255)).toBe(80);
-      expect(Math.round(rgb.g * 255)).toBe(80);
-      expect(Math.round(rgb.b * 255)).toBe(80);
+      expect(Math.round(rgb.r * 255)).toBe(112);
+      expect(Math.round(rgb.g * 255)).toBe(112);
+      expect(Math.round(rgb.b * 255)).toBe(112);
       expect(Math.round(rgb.a * 100)).toBe(75);
+    });
+
+    it("should mix rgb[255, 0, 0] and rgb[0, 0, 255] and get rgb[128, 0, 128]", () => {
+      const a = new RgbColor(1, 0, 0);
+      const b = new RgbColor(0, 0, 1);
+      const rgb = mix(a, b);
+
+      expect(Math.round(rgb.r * 255)).toBe(128);
+      expect(rgb.g).toBe(0);
+      expect(Math.round(rgb.b * 255)).toBe(128);
+      expect(rgb.a).toBe(1);
+    });
+
+    it("should mix rgb[255, 0, 0] and rgb[0, 0, 255] with weight 0.25 and get rgb[64, 0, 191]", () => {
+      const a = new RgbColor(1, 0, 0);
+      const b = new RgbColor(0, 0, 1);
+      const rgb = mix(a, b, 0.25);
+
+      expect(Math.round(rgb.r * 255)).toBe(64);
+      expect(rgb.g).toBe(0);
+      expect(Math.round(rgb.b * 255)).toBe(191);
+      expect(rgb.a).toBe(1);
+    });
+
+    it("should mix rgb[255, 0, 0] and rgb[0, 0, 255] with weight 0 and get rgb[0, 0, 255]", () => {
+      const a = new RgbColor(1, 0, 0);
+      const b = new RgbColor(0, 0, 1);
+      const rgb = mix(a, b, 0);
+
+      expect(rgb.r).toBe(0);
+      expect(rgb.g).toBe(0);
+      expect(Math.round(rgb.b * 255)).toBe(255);
+      expect(rgb.a).toBe(1);
+    });
+
+    it("should mix rgb[255, 0, 0] and rgb[0, 0, 255] with weight 1 and get rgb[255, 0, 0]", () => {
+      const a = new RgbColor(1, 0, 0);
+      const b = new RgbColor(0, 0, 1);
+      const rgb = mix(a, b, 1);
+
+      expect(Math.round(rgb.r * 255)).toBe(255);
+      expect(rgb.g).toBe(0);
+      expect(rgb.b).toBe(0);
+      expect(rgb.a).toBe(1);
     });
   });
 
