@@ -106,3 +106,20 @@ All color models are using values with a range `[0, 1]` for all properties.
 - `formatRgbToString(rgb: RgbColor): string`
 - `formatHslToString(hsl: HslColor): string`
 - `formatHsvToString(hsv: HsvColor): string`
+
+## Compare functions
+
+```txt
+Epsilon:
+
+alpha = 1 / 100
+rgb colors = 1 / 255
+hue = 1 / 360
+saturation, lightness, value, whiteness, blackness, cyan, magenta, yellow, black = 1 / 100
+```
+
+- `almostEqualRgb(a: RgbColor, b: RgbColor): boolean`
+- `almostEqualHsl(a: HslColor, b: HslColor): boolean`
+- `almostEqualHsv(a: HsvColor, b: HsvColor): boolean`
+- `almostEqualHwb(a: HwbColor, b: HwbColor): boolean`
+- `almostEqualCmyk(a: CmykColor, b: CmykColor): boolean`

@@ -17,25 +17,6 @@ describe("color", () => {
       expect(c.b).toBe(0.3);
       expect(c.a).toBe(1);
     });
-
-    it("should be equal", () => {
-      const c1 = new RgbColor(0.1, 0.2, 0.3, 0.4);
-      const c2 = new RgbColor(0.1, 0.2, 0.3, 0.4);
-      expect(c1.equals(c2)).toBeTruthy();
-    });
-
-    it("shouldn't be equal", () => {
-      const c1 = new RgbColor(0.1, 0.2, 0.3, 0.4);
-      const c2 = new RgbColor(0.2, 0.2, 0.3, 0.4);
-      const c3 = new RgbColor(0.1, 0.3, 0.3, 0.4);
-      const c4 = new RgbColor(0.1, 0.2, 0.4, 0.4);
-      const c5 = new RgbColor(0.1, 0.2, 0.3, 0.5);
-
-      expect(c1.equals(c2)).toBeFalsy();
-      expect(c1.equals(c3)).toBeFalsy();
-      expect(c1.equals(c4)).toBeFalsy();
-      expect(c1.equals(c5)).toBeFalsy();
-    });
   });
 
   describe("hsl", () => {
@@ -53,25 +34,6 @@ describe("color", () => {
       expect(c.s).toBe(0.2);
       expect(c.l).toBe(0.3);
       expect(c.a).toBe(1);
-    });
-
-    it("should be equal", () => {
-      const c1 = new HslColor(0.1, 0.2, 0.3, 0.4);
-      const c2 = new HslColor(0.1, 0.2, 0.3, 0.4);
-      expect(c1.equals(c2)).toBeTruthy();
-    });
-
-    it("shouldn't be equal", () => {
-      const c1 = new HslColor(0.1, 0.2, 0.3, 0.4);
-      const c2 = new HslColor(0.2, 0.2, 0.3, 0.4);
-      const c3 = new HslColor(0.1, 0.3, 0.3, 0.4);
-      const c4 = new HslColor(0.1, 0.2, 0.4, 0.4);
-      const c5 = new HslColor(0.1, 0.2, 0.3, 0.5);
-
-      expect(c1.equals(c2)).toBeFalsy();
-      expect(c1.equals(c3)).toBeFalsy();
-      expect(c1.equals(c4)).toBeFalsy();
-      expect(c1.equals(c5)).toBeFalsy();
     });
   });
 
@@ -91,25 +53,6 @@ describe("color", () => {
       expect(c.v).toBe(0.3);
       expect(c.a).toBe(1);
     });
-
-    it("should be equal", () => {
-      const c1 = new HsvColor(0.1, 0.2, 0.3, 0.4);
-      const c2 = new HsvColor(0.1, 0.2, 0.3, 0.4);
-      expect(c1.equals(c2)).toBeTruthy();
-    });
-
-    it("shouldn't be equal", () => {
-      const c1 = new HsvColor(0.1, 0.2, 0.3, 0.4);
-      const c2 = new HsvColor(0.2, 0.2, 0.3, 0.4);
-      const c3 = new HsvColor(0.1, 0.3, 0.3, 0.4);
-      const c4 = new HsvColor(0.1, 0.2, 0.4, 0.4);
-      const c5 = new HsvColor(0.1, 0.2, 0.3, 0.5);
-
-      expect(c1.equals(c2)).toBeFalsy();
-      expect(c1.equals(c3)).toBeFalsy();
-      expect(c1.equals(c4)).toBeFalsy();
-      expect(c1.equals(c5)).toBeFalsy();
-    });
   });
 
   describe("Hwb", () => {
@@ -127,25 +70,6 @@ describe("color", () => {
       expect(c.w).toBe(0.2);
       expect(c.b).toBe(0.3);
       expect(c.a).toBe(1);
-    });
-
-    it("should be equal", () => {
-      const c1 = new HwbColor(0.1, 0.2, 0.3, 0.4);
-      const c2 = new HwbColor(0.1, 0.2, 0.3, 0.4);
-      expect(c1.equals(c2)).toBeTruthy();
-    });
-
-    it("shouldn't be equal", () => {
-      const c1 = new HwbColor(0.1, 0.2, 0.3, 0.4);
-      const c2 = new HwbColor(0.2, 0.2, 0.3, 0.4);
-      const c3 = new HwbColor(0.1, 0.3, 0.3, 0.4);
-      const c4 = new HwbColor(0.1, 0.2, 0.4, 0.4);
-      const c5 = new HwbColor(0.1, 0.2, 0.3, 0.5);
-
-      expect(c1.equals(c2)).toBeFalsy();
-      expect(c1.equals(c3)).toBeFalsy();
-      expect(c1.equals(c4)).toBeFalsy();
-      expect(c1.equals(c5)).toBeFalsy();
     });
   });
 
@@ -166,27 +90,6 @@ describe("color", () => {
       expect(c.y).toBe(0.3);
       expect(c.k).toBe(0.4);
       expect(c.a).toBe(1);
-    });
-
-    it("should be equal", () => {
-      const c1 = new CmykColor(0.1, 0.2, 0.3, 0.4, 0.5);
-      const c2 = new CmykColor(0.1, 0.2, 0.3, 0.4, 0.5);
-      expect(c1.equals(c2)).toBeTruthy();
-    });
-
-    it("shouldn't be equal", () => {
-      const c1 = new CmykColor(0.1, 0.2, 0.3, 0.4, 0.5);
-      const c2 = new CmykColor(0.2, 0.2, 0.3, 0.4, 0.5);
-      const c3 = new CmykColor(0.1, 0.3, 0.3, 0.4, 0.5);
-      const c4 = new CmykColor(0.1, 0.2, 0.4, 0.4, 0.5);
-      const c5 = new CmykColor(0.1, 0.2, 0.3, 0.5, 0.5);
-      const c6 = new CmykColor(0.1, 0.2, 0.3, 0.5, 0.6);
-
-      expect(c1.equals(c2)).toBeFalsy();
-      expect(c1.equals(c3)).toBeFalsy();
-      expect(c1.equals(c4)).toBeFalsy();
-      expect(c1.equals(c5)).toBeFalsy();
-      expect(c1.equals(c6)).toBeFalsy();
     });
   });
 

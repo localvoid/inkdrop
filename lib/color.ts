@@ -1,10 +1,3 @@
-const EqAlphaDelta = 1 / 255;
-const EqRgbDelta = 3 / 255;
-const EqHueDelta = 1 / 360;
-const EqPercentDelta = 1 / 100;
-const EqPercent2Delta = 2 * EqPercentDelta;
-const EqPercent4Delta = 4 * EqPercentDelta;
-
 /**
  * RGB Color.
  */
@@ -19,15 +12,6 @@ export class RgbColor {
     this.g = g;
     this.b = b;
     this.a = a;
-  }
-
-  equals(other: RgbColor): boolean {
-    if ((this === other) ||
-        (((Math.abs(this.r - other.r) + Math.abs(this.g - other.g) + Math.abs(this.b - other.b)) < EqRgbDelta) &&
-          Math.abs(this.a - other.a) < EqAlphaDelta)) {
-      return true;
-    }
-    return false;
   }
 }
 
@@ -46,16 +30,6 @@ export class HsvColor {
     this.v = v;
     this.a = a;
   }
-
-  equals(other: HsvColor): boolean {
-    if ((this === other) ||
-        ((Math.abs(this.h - other.h) < EqHueDelta) &&
-         ((Math.abs(this.s - other.s) + Math.abs(this.v - other.v)) < EqPercent2Delta) &&
-         (Math.abs(this.a - other.a) < EqAlphaDelta))) {
-      return true;
-    }
-    return false;
-  }
 }
 
 /**
@@ -73,16 +47,6 @@ export class HslColor {
     this.l = l;
     this.a = a;
   }
-
-  equals(other: HslColor): boolean {
-    if ((this === other) ||
-        ((Math.abs(this.h - other.h) < EqHueDelta) &&
-         ((Math.abs(this.s - other.s) + Math.abs(this.l - other.l)) < EqPercent2Delta) &&
-         (Math.abs(this.a - other.a) < EqAlphaDelta))) {
-      return true;
-    }
-    return false;
-  }
 }
 
 /**
@@ -99,16 +63,6 @@ export class HwbColor {
     this.w = w;
     this.b = b;
     this.a = a;
-  }
-
-  equals(other: HwbColor): boolean {
-    if ((this === other) ||
-        ((Math.abs(this.h - other.h) < EqHueDelta) &&
-         ((Math.abs(this.w - other.w) + Math.abs(this.b - other.b)) < EqPercent2Delta) &&
-         (Math.abs(this.a - other.a) < EqAlphaDelta))) {
-      return true;
-    }
-    return false;
   }
 }
 
@@ -128,18 +82,6 @@ export class CmykColor {
     this.y = y;
     this.k = k;
     this.a = a;
-  }
-
-  equals(other: CmykColor): boolean {
-    if ((this === other) ||
-        (((Math.abs(this.c - other.c) +
-           Math.abs(this.m - other.m) +
-           Math.abs(this.y - other.y) +
-           Math.abs(this.k - other.k)) < EqPercent4Delta) &&
-          Math.abs(this.a - other.a) < EqAlphaDelta)) {
-      return true;
-    }
-    return false;
   }
 }
 

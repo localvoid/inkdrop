@@ -16,7 +16,7 @@ describe("combination", () => {
       const hsl = new HslColor(90 / 360, 0.2, 0.2);
       const r = triad(hsl);
       expect(r.length).toBe(3);
-      expect(r[0].equals(hsl)).toBeTruthy();
+      expect(r[0]).toBe(hsl);
 
       let i = r[1];
       expect(Math.round(i.h * 360)).toBe(210);
@@ -35,7 +35,7 @@ describe("combination", () => {
       const hsl = new HslColor(90 / 360, 0.2, 0.2);
       const r = tetrad(hsl);
       expect(r.length).toBe(4);
-      expect(r[0].equals(hsl)).toBeTruthy();
+      expect(r[0]).toBe(hsl);
 
       let i = r[1];
       expect(Math.round(i.h * 360)).toBe(180);
@@ -59,7 +59,7 @@ describe("combination", () => {
       const hsl = new HslColor(90 / 360, 0.2, 0.2);
       const r = splitComplement(hsl);
       expect(r.length).toBe(3);
-      expect(r[0].equals(hsl)).toBeTruthy();
+      expect(r[0]).toBe(hsl);
 
       let i = r[1];
       expect(Math.round(i.h * 360)).toBe(162);
