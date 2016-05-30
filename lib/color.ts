@@ -119,5 +119,7 @@ export class XyzColor {
   }
 }
 
+export const WhiteD65Color = new RgbColor(0.95047, 1.00000, 1.08883);
+export const WhiteD50Color = new RgbColor(0.96422, 1.00000, 0.82521);
 export const WhiteRgbColor = new RgbColor(1, 1, 1);
 export const BlackRgbColor = new RgbColor(0, 0, 0);

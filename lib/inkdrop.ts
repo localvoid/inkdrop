@@ -1,5 +1,5 @@
-export {RgbColor, LinearRgbColor, HslColor, HsvColor, HwbColor, CmykColor, XyzColor, WhiteRgbColor,
-  BlackRgbColor} from "./color";
+export {RgbColor, LinearRgbColor, HslColor, HsvColor, HwbColor, CmykColor, XyzColor, WhiteD65Color, WhiteD50Color,
+  WhiteRgbColor, BlackRgbColor} from "./color";
 export {rgbToHsl, hslToRgb, rgbToHsv, hsvToRgb, rgbToHex, rgbToHwb, hwbToRgb, rgbToCmyk, cmykToRgb,
   hexToRgb, linearRgbToXyz, xyzToLinearRgb} from "./convert";
 export {absDesaturate, absSaturate, absLighten, absDarken, absFadeIn, absFadeOut, absWhiten, absBlacken, absBrighten,
