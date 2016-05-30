@@ -1,4 +1,4 @@
-import {RgbColor, HsvColor, HslColor, HwbColor, CmykColor} from "./color";
+import {RgbColor, LinearRgbColor, HsvColor, HslColor, HwbColor, CmykColor, XyzColor} from "./color";
 
 export function rgbToHsl(rgb: RgbColor): HslColor {
   const r = rgb.r;
@@ -216,4 +216,18 @@ export function hexToRgb(hex: string): RgbColor {
     ((n >> 8) & 0xff) / 255,
     (n & 0xff) / 255,
     1);
+}
+
+export function linearRgbToXyz(lrgb: LinearRgbColor): XyzColor {
+  return new XyzColor(
+    0.4124564 * lrgb.r + 0.3575761 * lrgb.g + 0.1804375 * lrgb.b,
+    0.2126729 * lrgb.r + 0.7151522 * lrgb.g + 0.0721750 * lrgb.b,
+    0.0193339 * lrgb.r + 0.1191920 * lrgb.g + 0.9503041 * lrgb.b);
+}
+
+export function xyzToLinearRgb(xyz: XyzColor): LinearRgbColor {
+  return new LinearRgbColor(
+    3.2404542 * xyz.x - 1.5371385 * xyz.y - 0.4985314 * xyz.z,
+    -0.9692660 * xyz.x + 1.8760108 * xyz.y + 0.0415560 * xyz.z,
+    0.0556434 * xyz.x - 0.2040259 * xyz.y + 1.0572252 * xyz.z);
 }

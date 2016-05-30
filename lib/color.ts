@@ -102,5 +102,22 @@ export class CmykColor {
   }
 }
 
+/**
+ * XYZ Color.
+ */
+export class XyzColor {
+  readonly x: number;
+  readonly y: number;
+  readonly z: number;
+  readonly a: number;
+
+  constructor(x: number, y: number, z: number, a = 1) {
+    this.x = x;
+    this.y = y;
+    this.z = z;
+    this.a = a;
+  }
+}
+
 export const WhiteRgbColor = new RgbColor(1, 1, 1);
 export const BlackRgbColor = new RgbColor(0, 0, 0);

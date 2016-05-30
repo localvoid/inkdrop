@@ -30,6 +30,7 @@ All color models are using values with a range `[0, 1]` for all properties.
 - `HslColor`
 - `HwbColor`
 - `CmykColor`
+- `XyzColor`
 
 ## Converters
 
@@ -43,6 +44,8 @@ All color models are using values with a range `[0, 1]` for all properties.
 - `cmykToRgb(cmyk: CmykColor): RgbColor`
 - `rgbToHex(rgb: RgbColor): string`
 - `hexToRgb(hex: string): RgbColor`
+- `linearRgbToXyz(lrgb: LinearRgb): XyzColor`
+- `xyzToLinearRgb(xyz: XyzColor): LinearRgbColor`
 
 ## Utils
 
