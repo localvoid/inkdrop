@@ -103,7 +103,7 @@ export class CmykColor {
 }
 
 /**
- * XYZ Color.
+ * xyz Color.
  */
 export class XyzColor {
   readonly x: number;
@@ -115,6 +115,23 @@ export class XyzColor {
     this.x = x;
     this.y = y;
     this.z = z;
+    this.a = a;
+  }
+}
+
+/**
+ * xyY Color.
+ */
+export class XyyColor {
+  readonly x: number;
+  readonly y: number;
+  readonly Y: number;
+  readonly a: number;
+
+  constructor(x: number, y: number, Y: number, a = 1) {
+    this.x = x;
+    this.y = y;
+    this.Y = Y;
     this.a = a;
   }
 }

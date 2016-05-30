@@ -1,4 +1,5 @@
-import {RgbColor, LinearRgbColor, HsvColor, HslColor, HwbColor, CmykColor, XyzColor} from "./color";
+import {RgbColor, LinearRgbColor, HsvColor, HslColor, HwbColor, CmykColor, XyzColor, XyyColor,
+  WhiteD65Color} from "./color";
 
 export function rgbToHsl(rgb: RgbColor): HslColor {
   const r = rgb.r;
@@ -230,4 +231,36 @@ export function xyzToLinearRgb(xyz: XyzColor): LinearRgbColor {
     3.2404542 * xyz.x - 1.5371385 * xyz.y - 0.4985314 * xyz.z,
     -0.9692660 * xyz.x + 1.8760108 * xyz.y + 0.0415560 * xyz.z,
     0.0556434 * xyz.x - 0.2040259 * xyz.y + 1.0572252 * xyz.z);
+}
+
+function _xyzToXyy(xyz: XyzColor, w: RgbColor): XyyColor {
+  const n = xyz.x + xyz.y + xyz.z;
+  if (Math.abs(n) < 1e-14) {
+    const wsum = w.r + w.g + w.b;
+    return new XyyColor(
+      w.r / wsum,
+      w.g / wsum,
+      xyz.y,
+      xyz.a);
+  }
+  return new XyyColor(
+    xyz.x / n,
+    xyz.y / n,
+    xyz.y,
+    xyz.a);
+}
+
+export function xyzToXyy(xyz: XyzColor): XyyColor {
+  return _xyzToXyy(xyz, WhiteD65Color);
+}
+
+export function xyyToXyz(xyy: XyyColor): XyzColor {
+  if ((-1e-14 < xyy.y) && (xyy.y < 1e-14)) {
+    return new XyzColor(0, xyy.Y, 0, xyy.a);
+  }
+  return new XyzColor(
+    xyy.Y / xyy.y * xyy.x,
+    xyy.Y,
+    xyy.Y / xyy.y * (1 - xyy.x, xyy.y),
+    xyy.a);
 }
