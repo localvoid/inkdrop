@@ -1,4 +1,34 @@
-import {RgbColor} from "./color";
+import {RgbColor, LinearRgbColor} from "./color";
+
+function _linearize(v: number): number {
+  if (v <= 0.04045) {
+    return v / 12.92;
+  }
+  return Math.pow((v + 0.055) / 1.055, 2.4);
+}
+
+export function _delinearize(v: number): number {
+  if (v <= 0.0031308) {
+    return 12.92 * v;
+  }
+  return (1.055 * Math.pow(v, 1.0 / 2.4)) - 0.055;
+}
+
+/**
+ * Linearize RGB color.
+ *
+ * http://www.brucelindbloom.com/index.html?Eqn_RGB_to_XYZ.html
+ */
+export function linearize(rgb: RgbColor): LinearRgbColor {
+  return new LinearRgbColor(_linearize(rgb.r), _linearize(rgb.g), _linearize(rgb.b), rgb.a);
+}
+
+/**
+ * Delinearize RGB color.
+ */
+export function delinearize(lrgb: LinearRgbColor): RgbColor {
+  return new RgbColor(_delinearize(lrgb.r), _delinearize(lrgb.g), _delinearize(lrgb.b), lrgb.a);
+}
 
 /**
  * Luminance.
