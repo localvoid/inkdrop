@@ -1,4 +1,4 @@
-import {RgbColor, LinearRgbColor, HsvColor, HslColor, HwbColor, CmykColor, XyzColor, XyyColor,
+import {RgbColor, LinearRgbColor, HsvColor, HslColor, HwbColor, CmykColor, XyzColor, XyyColor, LabColor,
   WhiteD65Color} from "./color";
 
 export function rgbToHsl(rgb: RgbColor): HslColor {
@@ -263,4 +263,46 @@ export function xyyToXyz(xyy: XyyColor): XyzColor {
     xyy.Y,
     xyy.Y / xyy.y * (1 - xyy.x, xyy.y),
     xyy.a);
+}
+
+function _labF(t: number): number {
+  if (t > 6 / 29 * 6 / 29 * 6 / 29) {
+    return Math.cbrt(t);
+  }
+  return t / 3 * 29 / 6 * 29 / 6 + 4 / 29;
+}
+
+function _labFInverse(t: number): number {
+  if (t > 6 / 29) {
+    return t * t * t;
+  }
+  return 3 * 6 / 29 * 6 / 29 * (t - 4 / 29);
+}
+
+function _xyzToLab(xyz: XyzColor, w: RgbColor): LabColor {
+  const fy = _labF(xyz.y / w.r);
+
+  return new LabColor(
+    1.16 * fy - 0.16,
+    5 * (_labF(xyz.x / w.r) - fy),
+    2 * (fy - _labF(xyz.z / w.b)),
+    xyz.a);
+}
+
+function _labToXyz(lab: LabColor, w: RgbColor): XyzColor {
+  const l2 = (lab.l + 0.16) / 1.16;
+
+  return new XyzColor(
+    w.r * _labFInverse(l2 + lab.a / 5.0),
+    w.g * _labFInverse(l2),
+    w.b * _labFInverse(l2 - lab.b / 2.0),
+    lab.alpha);
+}
+
+export function xyzToLab(xyz: XyzColor): LabColor {
+  return _xyzToLab(xyz, WhiteD65Color);
+}
+
+export function labToXyz(lab: LabColor): XyzColor {
+  return _labToXyz(lab, WhiteD65Color);
 }

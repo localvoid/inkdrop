@@ -32,6 +32,7 @@ All color models are using values with a range `[0, 1]` for all properties.
 - `CmykColor`
 - `XyzColor`
 - `XyyColor`
+- `LabColor`
 
 ## Converters
 
@@ -49,6 +50,8 @@ All color models are using values with a range `[0, 1]` for all properties.
 - `xyzToLinearRgb(xyz: XyzColor): LinearRgbColor`
 - `xyzToXyy(xyz: XyzColor): XyyColor`
 - `xyyToXyz(xyy: XyyColor): XyzColor`
+- `xyzToLab(xyz: XyzColor): LabColor`
+- `labToXyz(lab: LabColor): XyzColor`
 
 ## Utils
 
