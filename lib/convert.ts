@@ -1,6 +1,36 @@
 import {RgbColor, LinearRgbColor, HsvColor, HslColor, HwbColor, CmykColor, XyzColor, XyyColor, LabColor,
   WhiteD65Color} from "./color";
 
+function _rgbLinearize(v: number): number {
+  if (v <= 0.04045) {
+    return v / 12.92;
+  }
+  return Math.pow((v + 0.055) / 1.055, 2.4);
+}
+
+export function _rgbDelinearize(v: number): number {
+  if (v <= 0.0031308) {
+    return 12.92 * v;
+  }
+  return (1.055 * Math.pow(v, 1.0 / 2.4)) - 0.055;
+}
+
+/**
+ * Linearize RGB color.
+ *
+ * http://www.brucelindbloom.com/index.html?Eqn_RGB_to_XYZ.html
+ */
+export function rgbLinearize(rgb: RgbColor): LinearRgbColor {
+  return new LinearRgbColor(_rgbLinearize(rgb.r), _rgbLinearize(rgb.g), _rgbLinearize(rgb.b), rgb.alpha);
+}
+
+/**
+ * Delinearize RGB color.
+ */
+export function rgbDelinearize(lrgb: LinearRgbColor): RgbColor {
+  return new RgbColor(_rgbDelinearize(lrgb.r), _rgbDelinearize(lrgb.g), _rgbDelinearize(lrgb.b), lrgb.alpha);
+}
+
 export function rgbToHsl(rgb: RgbColor): HslColor {
   const r = rgb.r;
   const g = rgb.g;

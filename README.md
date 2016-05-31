@@ -36,6 +36,8 @@ All color models are using values with a range `[0, 1]` for all properties.
 
 ## Converters
 
+- `rgbLinearize(rgb: RgbColor): LinearRgbColor`
+- `rgbDelinearize(lrgb: LinearRgbColor): RgbColor`
 - `rgbToHsl(rgb: RgbColor): HslColor`
 - `hslToRgb(hsl: HslColor): RgbColor`
 - `rgbToHsv(rgb: RgbColor): HsvColor`
@@ -55,8 +57,6 @@ All color models are using values with a range `[0, 1]` for all properties.
 
 ## Utils
 
-- `linearize(rgb: RgbColor): LinearRgbColor`
-- `delinearize(lrgb: LinearRgbColor): RgbColor`
 - `luminance(rgb: RgbColor): number`
 - `contrast(a: RgbColor, b: RgbColor): number`
 - `contrastLevel(contrastRatio: number): number`
