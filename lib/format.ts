@@ -33,7 +33,7 @@ export function formatRgbToString(rgb: RgbColor): string {
 
   return (rgb.alpha === 1) ?
     `rgb(${r},${g},${b})` :
-    `rgba(${r},${g},${b},${rgb.alpha})`;
+    `rgba(${r},${g},${b},${Math.round(rgb.alpha * 1000) / 1000})`;
 }
 
 /**
@@ -49,7 +49,7 @@ export function formatHslToString(hsl: HslColor): string {
 
   return (hsl.alpha === 1) ?
     `hsl(${h},${s}%,${l}%)` :
-    `hsla(${h},${s}%,${l}%,${hsl.alpha})`;
+    `hsla(${h},${s}%,${l}%,${Math.round(hsl.alpha * 1000) / 1000})`;
 }
 
 /**
@@ -65,5 +65,5 @@ export function formatHsvToString(hsv: HsvColor): string {
 
   return (hsv.alpha === 1) ?
     `hsv(${h},${s}%,${v}%)` :
-    `hsva(${h},${s}%,${v}%,${hsv.alpha})`;
+    `hsva(${h},${s}%,${v}%,${Math.round(hsv.alpha * 1000) / 1000})`;
 }
