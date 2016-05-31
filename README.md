@@ -64,6 +64,8 @@ All color models are using values with a range `[0, 1]` for all properties.
 - `brightness(rgb: RgbColor): number`
 - `isDark(rgb: RgbColor): boolean`
 - `isLight(rgb: RgbColor): boolean`
+- `labDistanceCIE76(lab: LabColor): number`
+- `labDistanceCIE94(lab: LabColor): number`
 
 ## Transformation functions
 

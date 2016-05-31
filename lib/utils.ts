@@ -1,4 +1,4 @@
-import {RgbColor} from "./color";
+import {RgbColor, LabColor} from "./color";
 
 /**
  * Luminance.
@@ -102,4 +102,25 @@ export function isDark(rgb: RgbColor): boolean {
  */
 export function isLight(rgb: RgbColor): boolean {
   return brightness(rgb) >= 0.5;
+}
+
+export function labDistanceCIE76(a: LabColor, b: LabColor): number {
+  return Math.sqrt(((a.l - b.l) ** 2) + ((a.a - b.a) ** 2) + ((a.b - b.b) ** 2));
+}
+
+export function labDistanceCIE94(cl: LabColor, cr: LabColor): number {
+  const kl = 1;
+  const k1 = 0.045;
+  const k2 = 0.015;
+
+  const deltaL = cl.l - cr.l;
+  const c1 = Math.sqrt(((cl.a) ** 2) + ((cl.b) ** 2));
+  const c2 = Math.sqrt(((cr.a) ** 2) + ((cr.b) ** 2));
+  const deltaCab = c1 - c2;
+  const deltaHab = Math.sqrt(((cl.a - cr.a) ** 2) + ((cl.b - cr.b) ** 2) - (deltaCab ** 2));
+  const sl = 1;
+  const sc = 1 + k1 * c1;
+  const sh = 1 + k2 * c1;
+
+  return Math.sqrt(((deltaL / (kl * sl)) ** 2) + ((deltaCab / sc) ** 2) + ((deltaHab / sh) ** 2));
 }
