@@ -131,16 +131,16 @@ export function absBlacken(hwb: HwbColor, amount = 0.1): HwbColor {
 /**
  * Brighten.
  *
- * @param rgb RGB color
+ * @param lrgb Linear RGB color
  * @param amount value should be normalized [0, 1]
- * @returns RGB color
+ * @returns Linear RGB color
  */
-export function absBrighten(rgb: RgbColor, amount = 0.1): RgbColor {
+export function absBrighten(lrgb: RgbColor, amount = 0.1): RgbColor {
   return new RgbColor(
-    clamp01(rgb.r + amount),
-    clamp01(rgb.g + amount),
-    clamp01(rgb.b + amount),
-    rgb.alpha);
+    clamp01(lrgb.r + amount),
+    clamp01(lrgb.g + amount),
+    clamp01(lrgb.b + amount),
+    lrgb.alpha);
 }
 
 /**
@@ -266,16 +266,16 @@ export function relBlacken(hwb: HwbColor, ratio = 0.1): HwbColor {
 /**
  * Brighten.
  *
- * @param rgb RGB color
+ * @param lrgb Linear RGB color
  * @param ratio value should be normalized [0, 1]
- * @returns RGB color
+ * @returns Linear RGB color
  */
-export function relBrighten(rgb: RgbColor, ratio = 0.1): RgbColor {
+export function relBrighten(lrgb: RgbColor, ratio = 0.1): RgbColor {
   return new RgbColor(
-    clamp01(rgb.r + (rgb.r * ratio)),
-    clamp01(rgb.g + (rgb.g * ratio)),
-    clamp01(rgb.b + (rgb.b * ratio)),
-    rgb.alpha);
+    clamp01(lrgb.r + (lrgb.r * ratio)),
+    clamp01(lrgb.g + (lrgb.g * ratio)),
+    clamp01(lrgb.b + (lrgb.b * ratio)),
+    lrgb.alpha);
 }
 
 /**
@@ -294,12 +294,12 @@ export function spin(hsl: HslColor, amount: number): HslColor {
 }
 
 /**
- * Mix RGB colors.
+ * Mix Linear RGB colors.
  *
- * @param a RGB color
- * @param b RGB color
+ * @param a Linear RGB color
+ * @param b Linear RGB color
  * @param amount
- * @returns RGB color
+ * @returns Linear RGB color
  */
 export function mix(a: RgbColor, b: RgbColor, amount = 0.5): RgbColor {
   const w = (amount * 2) - 1;
@@ -321,12 +321,12 @@ export function mix(a: RgbColor, b: RgbColor, amount = 0.5): RgbColor {
  *
  * Mix with white color.
  *
- * @param rgb RGB color
+ * @param lrgb Linear RGB color
  * @param amount
- * @return RGB color
+ * @return Linear RGB color
  */
-export function tint(rgb: RgbColor, amount?: number): RgbColor {
-  return mix(WhiteRgbColor, rgb, amount);
+export function tint(lrgb: RgbColor, amount?: number): RgbColor {
+  return mix(WhiteRgbColor, lrgb, amount);
 }
 
 /**
@@ -334,12 +334,12 @@ export function tint(rgb: RgbColor, amount?: number): RgbColor {
  *
  * Mix with black color.
  *
- * @param rgb RGB color
+ * @param lrgb Linear RGB color
  * @param amount
- * @return RGB color
+ * @return Linear RGB color
  */
-export function shade(rgb: RgbColor, amount?: number): RgbColor {
-  return mix(BlackRgbColor, rgb, amount);
+export function shade(lrgb: RgbColor, amount?: number): RgbColor {
+  return mix(BlackRgbColor, lrgb, amount);
 }
 
 /**

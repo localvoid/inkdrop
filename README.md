@@ -25,7 +25,6 @@ $ npm install inkdrop
 All color models are using values with a range `[0, 1]` for all properties.
 
 - `RgbColor`
-- `LinearRgbColor`
 - `HsvColor`
 - `HslColor`
 - `HwbColor`
@@ -36,8 +35,8 @@ All color models are using values with a range `[0, 1]` for all properties.
 
 ## Converters
 
-- `rgbLinearize(rgb: RgbColor): LinearRgbColor`
-- `rgbDelinearize(lrgb: LinearRgbColor): RgbColor`
+- `rgbLinearize(rgb: RgbColor): RgbColor`
+- `rgbDelinearize(lrgb: RgbColor): RgbColor`
 - `rgbToHsl(rgb: RgbColor): HslColor`
 - `hslToRgb(hsl: HslColor): RgbColor`
 - `rgbToHsv(rgb: RgbColor): HsvColor`
@@ -48,8 +47,8 @@ All color models are using values with a range `[0, 1]` for all properties.
 - `cmykToRgb(cmyk: CmykColor): RgbColor`
 - `rgbToHex(rgb: RgbColor): string`
 - `hexToRgb(hex: string): RgbColor`
-- `linearRgbToXyz(lrgb: LinearRgb): XyzColor`
-- `xyzToLinearRgb(xyz: XyzColor): LinearRgbColor`
+- `linearRgbToXyz(lrgb: RgbColor): XyzColor`
+- `xyzToLinearRgb(xyz: XyzColor): RgbColor`
 - `xyzToXyy(xyz: XyzColor): XyyColor`
 - `xyyToXyz(xyy: XyyColor): XyzColor`
 - `xyzToLab(xyz: XyzColor): LabColor`

@@ -1,4 +1,4 @@
-export {RgbColor, LinearRgbColor, HslColor, HsvColor, HwbColor, CmykColor, XyzColor, XyyColor, LabColor, WhiteD65Color,
+export {RgbColor, HslColor, HsvColor, HwbColor, CmykColor, XyzColor, XyyColor, LabColor, WhiteD65Color,
   WhiteD50Color, WhiteRgbColor, BlackRgbColor} from "./color";
 export {rgbLinearize, rgbDelinearize, rgbToHsl, hslToRgb, rgbToHsv, hsvToRgb, rgbToHex, rgbToHwb, hwbToRgb, rgbToCmyk,
   cmykToRgb, hexToRgb, linearRgbToXyz, xyzToLinearRgb, xyzToXyy, xyyToXyz, xyzToLab, labToXyz} from "./convert";

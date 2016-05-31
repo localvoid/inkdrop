@@ -16,23 +16,6 @@ export class RgbColor {
 }
 
 /**
- * Linear RGB Color.
- */
-export class LinearRgbColor {
-  readonly r: number;
-  readonly g: number;
-  readonly b: number;
-  readonly alpha: number;
-
-  constructor(r: number, g: number, b: number, alpha = 1) {
-    this.r = r;
-    this.g = g;
-    this.b = b;
-    this.alpha = alpha;
-  }
-}
-
-/**
  * HSV Color.
  */
 export class HsvColor {
