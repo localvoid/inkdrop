@@ -7,7 +7,7 @@ describe("color", () => {
       expect(c.r).toBe(0.1);
       expect(c.g).toBe(0.2);
       expect(c.b).toBe(0.3);
-      expect(c.a).toBe(0.4);
+      expect(c.alpha).toBe(0.4);
     });
 
     it("should have default alpha 1", () => {
@@ -15,7 +15,7 @@ describe("color", () => {
       expect(c.r).toBe(0.1);
       expect(c.g).toBe(0.2);
       expect(c.b).toBe(0.3);
-      expect(c.a).toBe(1);
+      expect(c.alpha).toBe(1);
     });
   });
 
@@ -25,7 +25,7 @@ describe("color", () => {
       expect(c.h).toBe(0.1);
       expect(c.s).toBe(0.2);
       expect(c.l).toBe(0.3);
-      expect(c.a).toBe(0.4);
+      expect(c.alpha).toBe(0.4);
     });
 
     it("should have default alpha 1", () => {
@@ -33,7 +33,7 @@ describe("color", () => {
       expect(c.h).toBe(0.1);
       expect(c.s).toBe(0.2);
       expect(c.l).toBe(0.3);
-      expect(c.a).toBe(1);
+      expect(c.alpha).toBe(1);
     });
   });
 
@@ -43,7 +43,7 @@ describe("color", () => {
       expect(c.h).toBe(0.1);
       expect(c.s).toBe(0.2);
       expect(c.v).toBe(0.3);
-      expect(c.a).toBe(0.4);
+      expect(c.alpha).toBe(0.4);
     });
 
     it("should have default alpha 1", () => {
@@ -51,7 +51,7 @@ describe("color", () => {
       expect(c.h).toBe(0.1);
       expect(c.s).toBe(0.2);
       expect(c.v).toBe(0.3);
-      expect(c.a).toBe(1);
+      expect(c.alpha).toBe(1);
     });
   });
 
@@ -61,7 +61,7 @@ describe("color", () => {
       expect(c.h).toBe(0.1);
       expect(c.w).toBe(0.2);
       expect(c.b).toBe(0.3);
-      expect(c.a).toBe(0.4);
+      expect(c.alpha).toBe(0.4);
     });
 
     it("should have default alpha 1", () => {
@@ -69,7 +69,7 @@ describe("color", () => {
       expect(c.h).toBe(0.1);
       expect(c.w).toBe(0.2);
       expect(c.b).toBe(0.3);
-      expect(c.a).toBe(1);
+      expect(c.alpha).toBe(1);
     });
   });
 
@@ -80,7 +80,7 @@ describe("color", () => {
       expect(c.m).toBe(0.2);
       expect(c.y).toBe(0.3);
       expect(c.k).toBe(0.4);
-      expect(c.a).toBe(0.5);
+      expect(c.alpha).toBe(0.5);
     });
 
     it("should have default alpha 1", () => {
@@ -89,7 +89,7 @@ describe("color", () => {
       expect(c.m).toBe(0.2);
       expect(c.y).toBe(0.3);
       expect(c.k).toBe(0.4);
-      expect(c.a).toBe(1);
+      expect(c.alpha).toBe(1);
     });
   });
 
@@ -98,14 +98,14 @@ describe("color", () => {
       expect(WhiteRgbColor.r).toBe(1);
       expect(WhiteRgbColor.g).toBe(1);
       expect(WhiteRgbColor.b).toBe(1);
-      expect(WhiteRgbColor.a).toBe(1);
+      expect(WhiteRgbColor.alpha).toBe(1);
     });
 
     it("BlackRgbColor should be black", () => {
       expect(BlackRgbColor.r).toBe(0);
       expect(BlackRgbColor.g).toBe(0);
       expect(BlackRgbColor.b).toBe(0);
-      expect(BlackRgbColor.a).toBe(1);
+      expect(BlackRgbColor.alpha).toBe(1);
     });
   });
 });

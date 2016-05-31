@@ -130,7 +130,7 @@ describe("transform", () => {
       expect(hsl.h).toBe(0.5);
       expect(hsl.s).toBe(0.5);
       expect(hsl.l).toBe(0.5);
-      expect(Math.round(hsl.a * 100)).toBe(70);
+      expect(Math.round(hsl.alpha * 100)).toBe(70);
     });
 
     it("should fadeIn hsl[180, 50, 50, 0.5] by 0.6", () => {
@@ -138,7 +138,7 @@ describe("transform", () => {
       expect(hsl.h).toBe(0.5);
       expect(hsl.s).toBe(0.5);
       expect(hsl.l).toBe(0.5);
-      expect(hsl.a).toBe(1);
+      expect(hsl.alpha).toBe(1);
     });
 
     it("should fadeIn hsl[180, 50, 50, 0.5] by -0.6", () => {
@@ -146,7 +146,7 @@ describe("transform", () => {
       expect(hsl.h).toBe(0.5);
       expect(hsl.s).toBe(0.5);
       expect(hsl.l).toBe(0.5);
-      expect(hsl.a).toBe(0);
+      expect(hsl.alpha).toBe(0);
     });
 
     it("should have default fadeIn value 0.1", () => {
@@ -154,7 +154,7 @@ describe("transform", () => {
       expect(hsl.h).toBe(0.5);
       expect(hsl.s).toBe(0.5);
       expect(hsl.l).toBe(0.5);
-      expect(Math.round(hsl.a * 100)).toBe(60);
+      expect(Math.round(hsl.alpha * 100)).toBe(60);
     });
   });
 
@@ -164,7 +164,7 @@ describe("transform", () => {
       expect(hsl.h).toBe(0.5);
       expect(hsl.s).toBe(0.5);
       expect(hsl.l).toBe(0.5);
-      expect(Math.round(hsl.a * 100)).toBe(30);
+      expect(Math.round(hsl.alpha * 100)).toBe(30);
     });
 
     it("should fadeOut hsl[180, 50, 50, 0.5] by 0.6", () => {
@@ -172,7 +172,7 @@ describe("transform", () => {
       expect(hsl.h).toBe(0.5);
       expect(hsl.s).toBe(0.5);
       expect(hsl.l).toBe(0.5);
-      expect(hsl.a).toBe(0);
+      expect(hsl.alpha).toBe(0);
     });
 
     it("should fadeOut hsl[180, 50, 50, 0.5] by -0.6", () => {
@@ -180,7 +180,7 @@ describe("transform", () => {
       expect(hsl.h).toBe(0.5);
       expect(hsl.s).toBe(0.5);
       expect(hsl.l).toBe(0.5);
-      expect(hsl.a).toBe(1);
+      expect(hsl.alpha).toBe(1);
     });
 
     it("should have default fadeOut value 0.1", () => {
@@ -188,7 +188,7 @@ describe("transform", () => {
       expect(hsl.h).toBe(0.5);
       expect(hsl.s).toBe(0.5);
       expect(hsl.l).toBe(0.5);
-      expect(Math.round(hsl.a * 100)).toBe(40);
+      expect(Math.round(hsl.alpha * 100)).toBe(40);
     });
   });
 
@@ -408,7 +408,7 @@ describe("transform", () => {
       expect(hsl.h).toBe(0.5);
       expect(hsl.s).toBe(0.5);
       expect(hsl.l).toBe(0.5);
-      expect(Math.round(hsl.a * 100)).toBe(60);
+      expect(Math.round(hsl.alpha * 100)).toBe(60);
     });
 
     it("should fadeIn hsl[180, 50, 50, 0.5] by 0.6", () => {
@@ -416,7 +416,7 @@ describe("transform", () => {
       expect(hsl.h).toBe(0.5);
       expect(hsl.s).toBe(0.5);
       expect(hsl.l).toBe(0.5);
-      expect(Math.round(hsl.a * 100)).toBe(80);
+      expect(Math.round(hsl.alpha * 100)).toBe(80);
     });
 
     it("should fadeIn hsl[180, 50, 50, 0.5] by -0.6", () => {
@@ -424,7 +424,7 @@ describe("transform", () => {
       expect(hsl.h).toBe(0.5);
       expect(hsl.s).toBe(0.5);
       expect(hsl.l).toBe(0.5);
-      expect(Math.round(hsl.a * 100)).toBe(20);
+      expect(Math.round(hsl.alpha * 100)).toBe(20);
     });
 
     it("should have default fadeIn value 0.1", () => {
@@ -432,7 +432,7 @@ describe("transform", () => {
       expect(hsl.h).toBe(0.5);
       expect(hsl.s).toBe(0.5);
       expect(hsl.l).toBe(0.5);
-      expect(Math.round(hsl.a * 100)).toBe(55);
+      expect(Math.round(hsl.alpha * 100)).toBe(55);
     });
   });
 
@@ -442,7 +442,7 @@ describe("transform", () => {
       expect(hsl.h).toBe(0.5);
       expect(hsl.s).toBe(0.5);
       expect(hsl.l).toBe(0.5);
-      expect(Math.round(hsl.a * 100)).toBe(40);
+      expect(Math.round(hsl.alpha * 100)).toBe(40);
     });
 
     it("should fadeOut hsl[180, 50, 50, 0.5] by 0.6", () => {
@@ -450,7 +450,7 @@ describe("transform", () => {
       expect(hsl.h).toBe(0.5);
       expect(hsl.s).toBe(0.5);
       expect(hsl.l).toBe(0.5);
-      expect(Math.round(hsl.a * 100)).toBe(20);
+      expect(Math.round(hsl.alpha * 100)).toBe(20);
     });
 
     it("should fadeOut hsl[180, 50, 50, 0.5] by -0.6", () => {
@@ -458,7 +458,7 @@ describe("transform", () => {
       expect(hsl.h).toBe(0.5);
       expect(hsl.s).toBe(0.5);
       expect(hsl.l).toBe(0.5);
-      expect(Math.round(hsl.a * 100)).toBe(80);
+      expect(Math.round(hsl.alpha * 100)).toBe(80);
     });
 
     it("should have default fadeOut value 0.1", () => {
@@ -466,7 +466,7 @@ describe("transform", () => {
       expect(hsl.h).toBe(0.5);
       expect(hsl.s).toBe(0.5);
       expect(hsl.l).toBe(0.5);
-      expect(Math.round(hsl.a * 100)).toBe(45);
+      expect(Math.round(hsl.alpha * 100)).toBe(45);
     });
   });
 
@@ -606,7 +606,7 @@ describe("transform", () => {
       expect(Math.round(rgb.r * 255)).toBe(96);
       expect(Math.round(rgb.g * 255)).toBe(96);
       expect(Math.round(rgb.b * 255)).toBe(96);
-      expect(rgb.a).toBe(1);
+      expect(rgb.alpha).toBe(1);
     });
 
 
@@ -618,7 +618,7 @@ describe("transform", () => {
       expect(Math.round(rgb.r * 255)).toBe(112);
       expect(Math.round(rgb.g * 255)).toBe(112);
       expect(Math.round(rgb.b * 255)).toBe(112);
-      expect(Math.round(rgb.a * 100)).toBe(75);
+      expect(Math.round(rgb.alpha * 100)).toBe(75);
     });
 
     it("should mix rgb[255, 0, 0] and rgb[0, 0, 255] and get rgb[128, 0, 128]", () => {
@@ -629,7 +629,7 @@ describe("transform", () => {
       expect(Math.round(rgb.r * 255)).toBe(128);
       expect(rgb.g).toBe(0);
       expect(Math.round(rgb.b * 255)).toBe(128);
-      expect(rgb.a).toBe(1);
+      expect(rgb.alpha).toBe(1);
     });
 
     it("should mix rgb[255, 0, 0] and rgb[0, 0, 255] with weight 0.25 and get rgb[64, 0, 191]", () => {
@@ -640,7 +640,7 @@ describe("transform", () => {
       expect(Math.round(rgb.r * 255)).toBe(64);
       expect(rgb.g).toBe(0);
       expect(Math.round(rgb.b * 255)).toBe(191);
-      expect(rgb.a).toBe(1);
+      expect(rgb.alpha).toBe(1);
     });
 
     it("should mix rgb[255, 0, 0] and rgb[0, 0, 255] with weight 0 and get rgb[0, 0, 255]", () => {
@@ -651,7 +651,7 @@ describe("transform", () => {
       expect(rgb.r).toBe(0);
       expect(rgb.g).toBe(0);
       expect(Math.round(rgb.b * 255)).toBe(255);
-      expect(rgb.a).toBe(1);
+      expect(rgb.alpha).toBe(1);
     });
 
     it("should mix rgb[255, 0, 0] and rgb[0, 0, 255] with weight 1 and get rgb[255, 0, 0]", () => {
@@ -662,7 +662,7 @@ describe("transform", () => {
       expect(Math.round(rgb.r * 255)).toBe(255);
       expect(rgb.g).toBe(0);
       expect(rgb.b).toBe(0);
-      expect(rgb.a).toBe(1);
+      expect(rgb.alpha).toBe(1);
     });
   });
 

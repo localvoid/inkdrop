@@ -33,7 +33,7 @@ export function rgbToHsl(rgb: RgbColor): HslColor {
     h /= 6;
   }
 
-  return new HslColor(h, s, l, rgb.a);
+  return new HslColor(h, s, l, rgb.alpha);
 }
 
 function hueToRgb(p: number, q: number, t: number): number {
@@ -61,7 +61,7 @@ export function hslToRgb(hsl: HslColor): RgbColor {
   const l = hsl.l;
 
   if (s === 0) {
-    return new RgbColor(1, 1, 1, hsl.a);
+    return new RgbColor(1, 1, 1, hsl.alpha);
   }
 
   const q = (l < 0.5) ?
@@ -74,7 +74,7 @@ export function hslToRgb(hsl: HslColor): RgbColor {
     hueToRgb(p, q, h + (1 / 3)),
     hueToRgb(p, q, h),
     hueToRgb(p, q, h - (1 / 3)),
-    hsl.a);
+    hsl.alpha);
 }
 
 export function rgbToHsv(rgb: RgbColor): HsvColor {
@@ -104,7 +104,7 @@ export function rgbToHsv(rgb: RgbColor): HsvColor {
     h /= 6;
   }
 
-  return new HsvColor(h, s, v, rgb.a);
+  return new HsvColor(h, s, v, rgb.alpha);
 }
 
 export function hsvToRgb(hsv: HsvColor): RgbColor {
@@ -122,7 +122,7 @@ export function hsvToRgb(hsv: HsvColor): RgbColor {
   const g = [t, v, v, q, p, p][mod];
   const b = [p, p, t, v, v, q][mod];
 
-  return new RgbColor(r, g, b, hsv.a);
+  return new RgbColor(r, g, b, hsv.alpha);
 }
 
 export function rgbToHwb(rgb: RgbColor): HwbColor {
@@ -130,7 +130,7 @@ export function rgbToHwb(rgb: RgbColor): HwbColor {
   const w = Math.min(rgb.r, rgb.g, rgb.b);
   const b = 1 - Math.max(rgb.r, rgb.g, rgb.b);
 
-  return new HwbColor(hsl.h, w, b, rgb.a);
+  return new HwbColor(hsl.h, w, b, rgb.alpha);
 }
 
 export function hwbToRgb(hwb: HwbColor): RgbColor {
@@ -167,7 +167,7 @@ export function hwbToRgb(hwb: HwbColor): RgbColor {
     case 5: r = v; g = w; b = n; break;
   }
 
-  return new RgbColor(r, g, b, hwb.a);
+  return new RgbColor(r, g, b, hwb.alpha);
 }
 
 export function rgbToCmyk(rgb: RgbColor): CmykColor {
@@ -186,7 +186,7 @@ export function rgbToCmyk(rgb: RgbColor): CmykColor {
     y = 0;
   }
 
-  return new CmykColor(c, m, y, k, rgb.a);
+  return new CmykColor(c, m, y, k, rgb.alpha);
 }
 
 export function cmykToRgb(cmyk: CmykColor): RgbColor {
@@ -196,7 +196,7 @@ export function cmykToRgb(cmyk: CmykColor): RgbColor {
   const g = 1 - Math.min(1, (cmyk.m * i) + k);
   const b = 1 - Math.min(1, (cmyk.y * i) + k);
 
-  return new RgbColor(r, g, b, cmyk.a);
+  return new RgbColor(r, g, b, cmyk.alpha);
 }
 
 export function rgbToHex(rgb: RgbColor): string {
@@ -241,13 +241,13 @@ function _xyzToXyy(xyz: XyzColor, w: RgbColor): XyyColor {
       w.r / wsum,
       w.g / wsum,
       xyz.y,
-      xyz.a);
+      xyz.alpha);
   }
   return new XyyColor(
     xyz.x / n,
     xyz.y / n,
     xyz.y,
-    xyz.a);
+    xyz.alpha);
 }
 
 export function xyzToXyy(xyz: XyzColor): XyyColor {
@@ -256,13 +256,13 @@ export function xyzToXyy(xyz: XyzColor): XyyColor {
 
 export function xyyToXyz(xyy: XyyColor): XyzColor {
   if ((-1e-14 < xyy.y) && (xyy.y < 1e-14)) {
-    return new XyzColor(0, xyy.Y, 0, xyy.a);
+    return new XyzColor(0, xyy.Y, 0, xyy.alpha);
   }
   return new XyzColor(
     xyy.Y / xyy.y * xyy.x,
     xyy.Y,
     xyy.Y / xyy.y * (1 - xyy.x, xyy.y),
-    xyy.a);
+    xyy.alpha);
 }
 
 function _labF(t: number): number {
@@ -286,7 +286,7 @@ function _xyzToLab(xyz: XyzColor, w: RgbColor): LabColor {
     1.16 * fy - 0.16,
     5 * (_labF(xyz.x / w.r) - fy),
     2 * (fy - _labF(xyz.z / w.b)),
-    xyz.a);
+    xyz.alpha);
 }
 
 function _labToXyz(lab: LabColor, w: RgbColor): XyzColor {

@@ -31,9 +31,9 @@ export function formatRgbToString(rgb: RgbColor): string {
   const g = Math.round(rgb.g * 255);
   const b = Math.round(rgb.b * 255);
 
-  return (rgb.a === 1) ?
+  return (rgb.alpha === 1) ?
     `rgb(${r},${g},${b})` :
-    `rgba(${r},${g},${b},${rgb.a})`;
+    `rgba(${r},${g},${b},${rgb.alpha})`;
 }
 
 /**
@@ -47,9 +47,9 @@ export function formatHslToString(hsl: HslColor): string {
   const s = Math.round(hsl.s * 100);
   const l = Math.round(hsl.l * 100);
 
-  return (hsl.a === 1) ?
+  return (hsl.alpha === 1) ?
     `hsl(${h},${s}%,${l}%)` :
-    `hsla(${h},${s}%,${l}%,${hsl.a})`;
+    `hsla(${h},${s}%,${l}%,${hsl.alpha})`;
 }
 
 /**
@@ -63,7 +63,7 @@ export function formatHsvToString(hsv: HsvColor): string {
   const s = Math.round(hsv.s * 100);
   const v = Math.round(hsv.v * 100);
 
-  return (hsv.a === 1) ?
+  return (hsv.alpha === 1) ?
     `hsv(${h},${s}%,${v}%)` :
-    `hsva(${h},${s}%,${v}%,${hsv.a})`;
+    `hsva(${h},${s}%,${v}%,${hsv.alpha})`;
 }

@@ -22,7 +22,7 @@ export function absDesaturate(hsl: HslColor, amount = 0.1): HslColor {
     hsl.h,
     clamp01(hsl.s - amount),
     hsl.l,
-    hsl.a);
+    hsl.alpha);
 }
 
 /**
@@ -37,7 +37,7 @@ export function absSaturate(hsl: HslColor, amount = 0.1): HslColor {
     hsl.h,
     clamp01(hsl.s + amount),
     hsl.l,
-    hsl.a);
+    hsl.alpha);
 }
 
 /**
@@ -52,7 +52,7 @@ export function absLighten(hsl: HslColor, amount = 0.1): HslColor {
     hsl.h,
     hsl.s,
     clamp01(hsl.l + amount),
-    hsl.a);
+    hsl.alpha);
 }
 
 /**
@@ -67,7 +67,7 @@ export function absDarken(hsl: HslColor, amount = 0.1): HslColor {
     hsl.h,
     hsl.s,
     clamp01(hsl.l - amount),
-    hsl.a);
+    hsl.alpha);
 }
 
 /**
@@ -82,7 +82,7 @@ export function absFadeIn(hsl: HslColor, amount = 0.1): HslColor {
     hsl.h,
     hsl.s,
     hsl.l,
-    clamp01(hsl.a + amount));
+    clamp01(hsl.alpha + amount));
 }
 
 /**
@@ -97,7 +97,7 @@ export function absFadeOut(hsl: HslColor, amount = 0.1): HslColor {
     hsl.h,
     hsl.s,
     hsl.l,
-    clamp01(hsl.a - amount));
+    clamp01(hsl.alpha - amount));
 }
 
 /**
@@ -111,7 +111,7 @@ export function absWhiten(hwb: HwbColor, amount = 0.1): HwbColor {
     hwb.h,
     clamp01(hwb.w + amount),
     hwb.b,
-    hwb.a);
+    hwb.alpha);
 }
 
 /**
@@ -125,7 +125,7 @@ export function absBlacken(hwb: HwbColor, amount = 0.1): HwbColor {
     hwb.h,
     hwb.w,
     clamp01(hwb.b + amount),
-    hwb.a);
+    hwb.alpha);
 }
 
 /**
@@ -140,7 +140,7 @@ export function absBrighten(rgb: RgbColor, amount = 0.1): RgbColor {
     clamp01(rgb.r + amount),
     clamp01(rgb.g + amount),
     clamp01(rgb.b + amount),
-    rgb.a);
+    rgb.alpha);
 }
 
 /**
@@ -155,7 +155,7 @@ export function relDesaturate(hsl: HslColor, ratio = 0.1): HslColor {
     hsl.h,
     clamp01(hsl.s - (hsl.s * ratio)),
     hsl.l,
-    hsl.a);
+    hsl.alpha);
 }
 
 /**
@@ -170,7 +170,7 @@ export function relSaturate(hsl: HslColor, ratio = 0.1): HslColor {
     hsl.h,
     clamp01(hsl.s + (hsl.s * ratio)),
     hsl.l,
-    hsl.a);
+    hsl.alpha);
 }
 
 /**
@@ -185,7 +185,7 @@ export function relLighten(hsl: HslColor, ratio = 0.1): HslColor {
     hsl.h,
     hsl.s,
     clamp01(hsl.l + (hsl.l * ratio)),
-    hsl.a);
+    hsl.alpha);
 }
 
 /**
@@ -200,7 +200,7 @@ export function relDarken(hsl: HslColor, ratio = 0.1): HslColor {
     hsl.h,
     hsl.s,
     clamp01(hsl.l - (hsl.l * ratio)),
-    hsl.a);
+    hsl.alpha);
 }
 
 /**
@@ -215,7 +215,7 @@ export function relFadeIn(hsl: HslColor, ratio = 0.1): HslColor {
     hsl.h,
     hsl.s,
     hsl.l,
-    clamp01(hsl.a + (hsl.a * ratio)));
+    clamp01(hsl.alpha + (hsl.alpha * ratio)));
 }
 
 /**
@@ -230,7 +230,7 @@ export function relFadeOut(hsl: HslColor, ratio = 0.1): HslColor {
     hsl.h,
     hsl.s,
     hsl.l,
-    clamp01(hsl.a - (hsl.a * ratio)));
+    clamp01(hsl.alpha - (hsl.alpha * ratio)));
 }
 
 /**
@@ -245,7 +245,7 @@ export function relWhiten(hwb: HwbColor, ratio = 0.1): HwbColor {
     hwb.h,
     clamp01(hwb.w + (hwb.w * ratio)),
     hwb.b,
-    hwb.a);
+    hwb.alpha);
 }
 
 /**
@@ -260,7 +260,7 @@ export function relBlacken(hwb: HwbColor, ratio = 0.1): HwbColor {
     hwb.h,
     hwb.w,
     clamp01(hwb.b + (hwb.b * ratio)),
-    hwb.a);
+    hwb.alpha);
 }
 
 /**
@@ -275,7 +275,7 @@ export function relBrighten(rgb: RgbColor, ratio = 0.1): RgbColor {
     clamp01(rgb.r + (rgb.r * ratio)),
     clamp01(rgb.g + (rgb.g * ratio)),
     clamp01(rgb.b + (rgb.b * ratio)),
-    rgb.a);
+    rgb.alpha);
 }
 
 /**
@@ -290,7 +290,7 @@ export function spin(hsl: HslColor, amount: number): HslColor {
     (hsl.h + amount) % 1,
     hsl.s,
     hsl.l,
-    hsl.a);
+    hsl.alpha);
 }
 
 /**
@@ -303,7 +303,7 @@ export function spin(hsl: HslColor, amount: number): HslColor {
  */
 export function mix(a: RgbColor, b: RgbColor, amount = 0.5): RgbColor {
   const w = (amount * 2) - 1;
-  const alpha = a.a - b.a;
+  const alpha = a.alpha - b.alpha;
   const wa = w * alpha;
 
   const aScale = (((wa === -1) ? w : (w + alpha) / (1 + wa)) + 1) / 2;
@@ -313,7 +313,7 @@ export function mix(a: RgbColor, b: RgbColor, amount = 0.5): RgbColor {
     a.r * aScale + b.r * bScale,
     a.g * aScale + b.g * bScale,
     a.b * aScale + b.b * bScale,
-    a.a * amount + b.a * (1 - amount));
+    a.alpha * amount + b.alpha * (1 - amount));
 }
 
 /**
@@ -353,7 +353,7 @@ export function negate(rgb: RgbColor): RgbColor {
     1 - rgb.r,
     1 - rgb.g,
     1 - rgb.b,
-    rgb.a);
+    rgb.alpha);
 }
 
 /**
@@ -364,7 +364,7 @@ export function negate(rgb: RgbColor): RgbColor {
  */
 export function greyscale(rgb: RgbColor): RgbColor {
   const v = (rgb.r * 0.3) + (rgb.g * 0.59) + (rgb.g * 0.11);
-  return new RgbColor(v, v, v, rgb.a);
+  return new RgbColor(v, v, v, rgb.alpha);
 }
 
 /**
@@ -378,5 +378,5 @@ export function greyscaleHsl(hsl: HslColor): HslColor {
     hsl.h,
     0,
     hsl.l,
-    hsl.a);
+    hsl.alpha);
 }

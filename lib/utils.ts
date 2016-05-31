@@ -20,14 +20,14 @@ export function _delinearize(v: number): number {
  * http://www.brucelindbloom.com/index.html?Eqn_RGB_to_XYZ.html
  */
 export function linearize(rgb: RgbColor): LinearRgbColor {
-  return new LinearRgbColor(_linearize(rgb.r), _linearize(rgb.g), _linearize(rgb.b), rgb.a);
+  return new LinearRgbColor(_linearize(rgb.r), _linearize(rgb.g), _linearize(rgb.b), rgb.alpha);
 }
 
 /**
  * Delinearize RGB color.
  */
 export function delinearize(lrgb: LinearRgbColor): RgbColor {
-  return new RgbColor(_delinearize(lrgb.r), _delinearize(lrgb.g), _delinearize(lrgb.b), lrgb.a);
+  return new RgbColor(_delinearize(lrgb.r), _delinearize(lrgb.g), _delinearize(lrgb.b), lrgb.alpha);
 }
 
 /**
@@ -47,7 +47,7 @@ export function luminance(rgb: RgbColor): number {
   g = (g <= 0.03928) ? g / 12.92 : Math.pow(((g + 0.055) / 1.055), 2.4);
   b = (b <= 0.03928) ? b / 12.92 : Math.pow(((b + 0.055) / 1.055), 2.4);
 
-  return ((0.2126 * r) + (0.7152 * g) + (0.0722 * b)) * rgb.a;
+  return ((0.2126 * r) + (0.7152 * g) + (0.0722 * b)) * rgb.alpha;
 }
 
 /**

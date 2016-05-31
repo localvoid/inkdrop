@@ -5,13 +5,13 @@ export class RgbColor {
   readonly r: number;
   readonly g: number;
   readonly b: number;
-  readonly a: number;
+  readonly alpha: number;
 
-  constructor(r: number, g: number, b: number, a = 1) {
+  constructor(r: number, g: number, b: number, alpha = 1) {
     this.r = r;
     this.g = g;
     this.b = b;
-    this.a = a;
+    this.alpha = alpha;
   }
 }
 
@@ -22,13 +22,13 @@ export class LinearRgbColor {
   readonly r: number;
   readonly g: number;
   readonly b: number;
-  readonly a: number;
+  readonly alpha: number;
 
-  constructor(r: number, g: number, b: number, a = 1) {
+  constructor(r: number, g: number, b: number, alpha = 1) {
     this.r = r;
     this.g = g;
     this.b = b;
-    this.a = a;
+    this.alpha = alpha;
   }
 }
 
@@ -39,13 +39,13 @@ export class HsvColor {
   readonly h: number;
   readonly s: number;
   readonly v: number;
-  readonly a: number;
+  readonly alpha: number;
 
-  constructor(h: number, s: number, v: number, a = 1) {
+  constructor(h: number, s: number, v: number, alpha = 1) {
     this.h = h;
     this.s = s;
     this.v = v;
-    this.a = a;
+    this.alpha = alpha;
   }
 }
 
@@ -56,13 +56,13 @@ export class HslColor {
   readonly h: number;
   readonly s: number;
   readonly l: number;
-  readonly a: number;
+  readonly alpha: number;
 
-  constructor(h: number, s: number, l: number, a = 1) {
+  constructor(h: number, s: number, l: number, alpha = 1) {
     this.h = h;
     this.s = s;
     this.l = l;
-    this.a = a;
+    this.alpha = alpha;
   }
 }
 
@@ -73,13 +73,13 @@ export class HwbColor {
   readonly h: number;
   readonly w: number;
   readonly b: number;
-  readonly a: number;
+  readonly alpha: number;
 
-  constructor(h: number, w: number, b: number, a = 1) {
+  constructor(h: number, w: number, b: number, alpha = 1) {
     this.h = h;
     this.w = w;
     this.b = b;
-    this.a = a;
+    this.alpha = alpha;
   }
 }
 
@@ -91,14 +91,14 @@ export class CmykColor {
   readonly m: number;
   readonly y: number;
   readonly k: number;
-  readonly a: number;
+  readonly alpha: number;
 
-  constructor(c: number, m: number, y: number, k: number, a = 1) {
+  constructor(c: number, m: number, y: number, k: number, alpha = 1) {
     this.c = c;
     this.m = m;
     this.y = y;
     this.k = k;
-    this.a = a;
+    this.alpha = alpha;
   }
 }
 
@@ -109,13 +109,13 @@ export class XyzColor {
   readonly x: number;
   readonly y: number;
   readonly z: number;
-  readonly a: number;
+  readonly alpha: number;
 
-  constructor(x: number, y: number, z: number, a = 1) {
+  constructor(x: number, y: number, z: number, alpha = 1) {
     this.x = x;
     this.y = y;
     this.z = z;
-    this.a = a;
+    this.alpha = alpha;
   }
 }
 
@@ -126,13 +126,13 @@ export class XyyColor {
   readonly x: number;
   readonly y: number;
   readonly Y: number;
-  readonly a: number;
+  readonly alpha: number;
 
-  constructor(x: number, y: number, Y: number, a = 1) {
+  constructor(x: number, y: number, Y: number, alpha = 1) {
     this.x = x;
     this.y = y;
     this.Y = Y;
-    this.a = a;
+    this.alpha = alpha;
   }
 }
 
