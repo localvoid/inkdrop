@@ -55,7 +55,7 @@ function buildTests() {
 function buildES6() {
   const merge = require("merge2");
 
-  const result = gulp.src(["lib/**/*.ts"])
+  return gulp.src(["lib/**/*.ts"])
     .pipe(tslint())
     .pipe(tslint.report("verbose", {
       emitError: false,
@@ -80,7 +80,7 @@ function distES6() {
 
 function distUMD() {
   return rollup.rollup({
-    entry: "src/inkdrop.ts",
+    entry: "lib/inkdrop.ts",
     plugins: [
       rollupTypeScript(Object.assign(tsConfig.compilerOptions, {
         typescript: typescript,
