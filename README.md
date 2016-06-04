@@ -32,6 +32,7 @@ All color models are using values with a range `[0, 1]` for all properties.
 - `XyzColor`
 - `XyyColor`
 - `LabColor`
+- `LchColor`
 
 ## Converters
 
@@ -53,6 +54,8 @@ All color models are using values with a range `[0, 1]` for all properties.
 - `xyyToXyz(xyy: XyyColor): XyzColor`
 - `xyzToLab(xyz: XyzColor): LabColor`
 - `labToXyz(lab: LabColor): XyzColor`
+- `labToLch(lab: LabColor): LchColor`
+- `lchToLab(lch: LchColor): LabColor`
 
 ## Utils
 
@@ -65,6 +68,7 @@ All color models are using values with a range `[0, 1]` for all properties.
 - `isLight(rgb: RgbColor): boolean`
 - `labDistanceCIE76(lab: LabColor): number`
 - `labDistanceCIE94(lab: LabColor): number`
+- `clampRgb(rgb: RgbColor): RgbColor`
 
 ## Transformation functions
 

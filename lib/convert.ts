@@ -1,4 +1,5 @@
-import {RgbColor, HsvColor, HslColor, HwbColor, CmykColor, XyzColor, XyyColor, LabColor, WhiteD65Color} from "./color";
+import {RgbColor, HsvColor, HslColor, HwbColor, CmykColor, XyzColor, XyyColor, LabColor, LchColor,
+  WhiteD65Color} from "./color";
 
 function _rgbLinearize(v: number): number {
   if (v <= 0.04045) {
@@ -11,7 +12,7 @@ export function _rgbDelinearize(v: number): number {
   if (v <= 0.0031308) {
     return 12.92 * v;
   }
-  return (1.055 * Math.pow(v, 1.0 / 2.4)) - 0.055;
+  return (1.055 * Math.pow(v, 1 / 2.4)) - 0.055;
 }
 
 /**
@@ -294,18 +295,23 @@ export function xyyToXyz(xyy: XyyColor): XyzColor {
     xyy.alpha);
 }
 
+const LabT0 = 4 / 29;
+const LabT1 = 6 / 29;
+const LabT2 = 3 * LabT1 ** 2;
+const LabT3 = LabT1 ** 3;
+
 function _labF(t: number): number {
-  if (t > 6 / 29 * 6 / 29 * 6 / 29) {
-    return Math.cbrt(t);
+  if (t > LabT3) {
+    return Math.pow(t, 1 / 3);
   }
-  return t / 3 * 29 / 6 * 29 / 6 + 4 / 29;
+  return t / LabT2 + LabT0;
 }
 
 function _labFInverse(t: number): number {
-  if (t > 6 / 29) {
-    return t * t * t;
+  if (t > LabT0) {
+    return t ** 3;
   }
-  return 3 * 6 / 29 * 6 / 29 * (t - 4 / 29);
+  return LabT2 * (t - LabT1);
 }
 
 function _xyzToLab(xyz: XyzColor, w: RgbColor): LabColor {
@@ -322,9 +328,9 @@ function _labToXyz(lab: LabColor, w: RgbColor): XyzColor {
   const l2 = (lab.l + 0.16) / 1.16;
 
   return new XyzColor(
-    w.r * _labFInverse(l2 + lab.a / 5.0),
+    w.r * _labFInverse(l2 + lab.a / 5),
     w.g * _labFInverse(l2),
-    w.b * _labFInverse(l2 - lab.b / 2.0),
+    w.b * _labFInverse(l2 - lab.b / 2),
     lab.alpha);
 }
 
@@ -334,4 +340,23 @@ export function xyzToLab(xyz: XyzColor): LabColor {
 
 export function labToXyz(lab: LabColor): XyzColor {
   return _labToXyz(lab, WhiteD65Color);
+}
+
+const PI2 = Math.PI * 2;
+
+export function labToLch(lab: LabColor): LchColor {
+  return new LchColor(
+    lab.l,
+    Math.sqrt(lab.a ** 2 + lab.b ** 2),
+    (Math.atan2(lab.b, lab.a) / PI2 + 1) % 1,
+    lab.a);
+}
+
+export function lchToLab(lch: LchColor): LabColor {
+  const h = lch.h * PI2;
+  return new LabColor(
+    lch.l,
+    Math.cos(h) * lch.c,
+    Math.sin(h) * lch.c,
+    lch.alpha);
 }

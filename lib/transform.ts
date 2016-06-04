@@ -1,14 +1,5 @@
 import {RgbColor, HslColor, HwbColor, WhiteRgbColor, BlackRgbColor} from "./color";
-
-function clamp01(v: number): number {
-  if (v <= 0) {
-    return 0;
-  }
-  if (v >= 1) {
-    return 1;
-  }
-  return v;
-}
+import {clamp01} from "./utils";
 
 /**
  * Desaturate.

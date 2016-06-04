@@ -136,6 +136,23 @@ export class LabColor {
   }
 }
 
+/**
+ * LCH Color.
+ */
+export class LchColor {
+  readonly l: number;
+  readonly c: number;
+  readonly h: number;
+  readonly alpha: number;
+
+  constructor(l: number, c: number, h: number, alpha = 1) {
+    this.l = l;
+    this.c = c;
+    this.h = h;
+    this.alpha = alpha;
+  }
+}
+
 export const WhiteD65Color = new RgbColor(0.95047, 1.00000, 1.08883);
 export const WhiteD50Color = new RgbColor(0.96422, 1.00000, 0.82521);
 export const WhiteRgbColor = new RgbColor(1, 1, 1);

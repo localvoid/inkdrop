@@ -1,5 +1,15 @@
 import {RgbColor, LabColor} from "./color";
 
+export function clamp01(v: number): number {
+  if (v <= 0) {
+    return 0;
+  }
+  if (v >= 1) {
+    return 1;
+  }
+  return v;
+}
+
 /**
  * Luminance.
  *
@@ -123,4 +133,12 @@ export function labDistanceCIE94(cl: LabColor, cr: LabColor): number {
   const sh = 1 + k2 * c1;
 
   return Math.sqrt(((deltaL / (kl * sl)) ** 2) + ((deltaCab / sc) ** 2) + ((deltaHab / sh) ** 2));
+}
+
+export function clampRgb(rgb: RgbColor): RgbColor {
+  return new RgbColor(
+    clamp01(rgb.r),
+    clamp01(rgb.g),
+    clamp01(rgb.b),
+    clamp01(rgb.alpha));
 }

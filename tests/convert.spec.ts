@@ -1,8 +1,26 @@
-import {RgbColor, HslColor, HsvColor, HwbColor, CmykColor} from "../lib/color";
-import {rgbToHsl, hslToRgb, rgbToHsv, hsvToRgb, rgbToHwb, hwbToRgb, rgbToCmyk, cmykToRgb, rgbToHex,
-  hexToRgb} from "../lib/convert";
+import {RgbColor, HslColor, HsvColor, HwbColor, CmykColor, XyzColor, LabColor, LchColor} from "../lib/color";
+import {rgbLinearize, rgbDelinearize, rgbToHsl, hslToRgb, rgbToHsv, hsvToRgb, rgbToHwb, hwbToRgb, rgbToCmyk, cmykToRgb,
+  rgbToHex, hexToRgb, linearRgbToXyz, xyzToLinearRgb, xyzToLab, labToXyz, labToLch, lchToLab} from "../lib/convert";
 
 describe("convert", () => {
+  it("should convert srgb[140, 200, 100] to lrgb[196, 229, 168]", () => {
+    const srgb = new RgbColor(140 / 255, 200 / 255, 100 / 255);
+    const lrgb = rgbDelinearize(srgb);
+
+    expect(Math.round(lrgb.r * 255)).toBe(196);
+    expect(Math.round(lrgb.g * 255)).toBe(229);
+    expect(Math.round(lrgb.b * 255)).toBe(168);
+  });
+
+  it("should convert lrgb[196, 229, 168] to srgb[140, 200, 100]", () => {
+    const lrgb = new RgbColor(196 / 255, 229 / 255, 168 / 255);
+    const srgb = rgbLinearize(lrgb);
+
+    expect(Math.round(srgb.r * 255)).toBe(141);
+    expect(Math.round(srgb.g * 255)).toBe(200);
+    expect(Math.round(srgb.b * 255)).toBe(100);
+  });
+
   it("should convert rgb[140, 200, 100] to hsl[96, 48, 59]", () => {
     const rgb = new RgbColor(140 / 255, 200 / 255, 100 / 255);
     const hsl = rgbToHsl(rgb);
@@ -235,5 +253,59 @@ describe("convert", () => {
       expect(rgb.g).toBeCloseTo(102 / 255, 2);
       expect(rgb.b).toBeCloseTo(204 / 255, 2);
     });
+  });
+
+  it("should convert lrgb[314, 45, 42] to xyz[60, 40, 20]", () => {
+    const lrgb = new RgbColor(314 / 255, 45 / 255, 42 / 255);
+    const xyz = linearRgbToXyz(lrgb);
+
+    expect(Math.round(xyz.x * 100)).toBe(60);
+    expect(Math.round(xyz.y * 100)).toBe(40);
+    expect(Math.round(xyz.z * 100)).toBe(20);
+  });
+
+  it("should convert xyz[60, 40, 20] to lrgb[314, 45, 42]", () => {
+    const xyz = new XyzColor(60 / 100, 40 / 100, 20 / 100);
+    const lrgb = xyzToLinearRgb(xyz);
+
+    expect(Math.round(lrgb.r * 255)).toBe(314);
+    expect(Math.round(lrgb.g * 255)).toBe(45);
+    expect(Math.round(lrgb.b * 255)).toBe(42);
+  });
+
+  it("should convert xyz[60, 40, 20] to lab[71, 54, 36]", () => {
+    const xyz = new XyzColor(60 / 100, 40 / 100, 20 / 100);
+    const lab = xyzToLab(xyz);
+
+    expect(Math.round(lab.l * 100)).toBe(71);
+    expect(Math.round(lab.a * 100)).toBe(54);
+    expect(Math.round(lab.b * 100)).toBe(36);
+  });
+
+  it("should convert lab[71, 54, 36] to xyz[60, 42, 18]", () => {
+    const lab = new LabColor(71 / 100, 54 / 100, 36 / 100);
+    const xyz = labToXyz(lab);
+
+    expect(Math.round(xyz.x * 100)).toBe(60);
+    expect(Math.round(xyz.y * 100)).toBe(42);
+    expect(Math.round(xyz.z * 100)).toBe(20);
+  });
+
+  it("should convert lab[71, 54, 36] to lch[71, 65, 34]", () => {
+    const lab = new LabColor(71 / 100, 54 / 100, 36 / 100);
+    const lch = labToLch(lab);
+
+    expect(Math.round(lch.l * 100)).toBe(71);
+    expect(Math.round(lch.c * 100)).toBe(65);
+    expect(Math.round(lch.h * 360)).toBe(34);
+  });
+
+  it("should convert lch[71, 65, 34] to lab[71, 54, 36]", () => {
+    const lch = new LchColor(71 / 100, 65 / 100, 34 / 360);
+    const lab = lchToLab(lch);
+
+    expect(Math.round(lab.l * 100)).toBe(71);
+    expect(Math.round(lab.a * 100)).toBe(54);
+    expect(Math.round(lab.b * 100)).toBe(36);
   });
 });
