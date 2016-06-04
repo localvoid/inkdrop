@@ -1,5 +1,6 @@
 import {RgbColor, HsvColor, HslColor, HwbColor, CmykColor, XyzColor, XyyColor, LabColor, LchColor,
   WhiteD65Color} from "./color";
+import {clampRgb} from "./utils";
 
 function _rgbLinearize(v: number): number {
   if (v <= 0.04045) {
@@ -359,4 +360,42 @@ export function lchToLab(lch: LchColor): LabColor {
     Math.cos(h) * lch.c,
     Math.sin(h) * lch.c,
     lch.alpha);
+}
+
+// shortcuts
+
+/**
+ * sRGB to LAB
+ *
+ * sRGB -> lRGB -> XYZ -> LAB
+ */
+export function rgbToLab(rgb: RgbColor): LabColor {
+  return xyzToLab(linearRgbToXyz(rgbLinearize(rgb)));
+}
+
+/**
+ * LAB to sRGB
+ *
+ * LAB -> XYZ -> lRGB -> sRGB
+ */
+export function labToRgb(lab: LabColor): RgbColor {
+  return clampRgb(rgbDelinearize(xyzToLinearRgb(labToXyz(lab))));
+}
+
+/**
+ * sRGB to LCH
+ *
+ * sRGB -> lRGB -> XYZ -> LAB -> LCH
+ */
+export function rgbToLch(rgb: RgbColor): LchColor {
+  return labToLch(rgbToLab(rgb));
+}
+
+/**
+ * LCH to sRGB
+ *
+ * LCH -> LAB -> XYZ -> lRGB -> sRGB
+ */
+export function lchToRgb(lch: LchColor): RgbColor {
+  return labToRgb(lchToLab(lch));
 }

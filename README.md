@@ -56,6 +56,10 @@ All color models are using values with a range `[0, 1]` for all properties.
 - `labToXyz(lab: LabColor): XyzColor`
 - `labToLch(lab: LabColor): LchColor`
 - `lchToLab(lch: LchColor): LabColor`
+- `rgbToLab(rgb: RgbColor): LabColor`
+- `labToRgb(lab: LabColor): RgbColor`
+- `rgbToLch(rgb: RgbColor): LchColor`
+- `lchToRgb(lch: LchColor): RgbColor`
 
 ## Utils
 

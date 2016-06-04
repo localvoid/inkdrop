@@ -2,7 +2,7 @@ export {RgbColor, HslColor, HsvColor, HwbColor, CmykColor, XyzColor, XyyColor, L
   WhiteD50Color, WhiteRgbColor, BlackRgbColor} from "./color";
 export {rgbLinearize, rgbDelinearize, rgbToHsl, hslToRgb, rgbToHsv, hsvToRgb, rgbToHex, rgbToHwb, hwbToRgb, rgbToCmyk,
   cmykToRgb, hexToRgb, linearRgbToXyz, xyzToLinearRgb, xyzToXyy, xyyToXyz, xyzToLab, labToXyz, labToLch,
-  lchToLab} from "./convert";
+  lchToLab, rgbToLab, labToRgb, rgbToLch, lchToRgb} from "./convert";
 export {absDesaturate, absSaturate, absLighten, absDarken, absFadeIn, absFadeOut, absWhiten, absBlacken, absBrighten,
   relDesaturate, relSaturate, relLighten, relDarken, relFadeIn, relFadeOut, relWhiten, relBlacken, relBrighten,
   spin, greyscale, greyscaleHsl, mix, negate, tint, shade} from "./transform";
