@@ -72,6 +72,7 @@ All color models are using values with a range `[0, 1]` for all properties.
 - `isLight(rgb: RgbColor): boolean`
 - `labDistanceCIE76(lab: LabColor): number`
 - `labDistanceCIE94(lab: LabColor): number`
+- `isValidRgb(rgb: RgbColor): RgbColor`
 - `clampRgb(rgb: RgbColor): RgbColor`
 
 ## Transformation functions
@@ -155,3 +156,5 @@ saturation, lightness, value, whiteness, blackness, cyan, magenta, yellow, black
 - `WhiteD50Color`
 - `WhiteRgbColor`
 - `BlackRgbColor`
+- `randomWarmColor(): LchColor`
+- `randomHappyColor(): LchColor`

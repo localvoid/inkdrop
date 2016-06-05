@@ -135,6 +135,13 @@ export function labDistanceCIE94(cl: LabColor, cr: LabColor): number {
   return Math.sqrt(((deltaL / (kl * sl)) ** 2) + ((deltaCab / sc) ** 2) + ((deltaHab / sh) ** 2));
 }
 
+export function isValidRgb(rgb: RgbColor): boolean {
+  return ((rgb.r >= 0 && rgb.r <= 1) &&
+          (rgb.g >= 0 && rgb.g <= 1) &&
+          (rgb.b >= 0 && rgb.b <= 1) &&
+          (rgb.alpha >= 0 && rgb.alpha <= 1));
+}
+
 export function clampRgb(rgb: RgbColor): RgbColor {
   return new RgbColor(
     clamp01(rgb.r),
