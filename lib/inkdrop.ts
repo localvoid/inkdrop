@@ -16,3 +16,5 @@ export {almostEqualRgb, almostEqualHsl, almostEqualHsv, almostEqualHwb, almostEq
   almostEqualLab, almostEqualLch} from "./compare";
 export {randomHappyColor, randomWarmColor} from "./palette";
 export {parseHex} from "./parse";
+export * from "./x11";
+export * from "./brewer";
