@@ -144,3 +144,14 @@ saturation, lightness, value, whiteness, blackness, cyan, magenta, yellow, black
 - `almostEqualHsv(a: HsvColor, b: HsvColor): boolean`
 - `almostEqualHwb(a: HwbColor, b: HwbColor): boolean`
 - `almostEqualCmyk(a: CmykColor, b: CmykColor): boolean`
+- `almostEqualXyz(a: XyzColor, b: XyzColor): boolean`
+- `almostEqualXyy(a: XyyColor, b: XyyColor): boolean`
+- `almostEqualLab(a: LabColor, b: LabColor): boolean`
+- `almostEqualLch(a: LchColor, b: LchColor): boolean`
+
+## Colors
+
+- `WhiteD65Color`
+- `WhiteD50Color`
+- `WhiteRgbColor`
+- `BlackRgbColor`

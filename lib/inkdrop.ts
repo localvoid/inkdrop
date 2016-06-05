@@ -12,4 +12,5 @@ export {luminance, contrast, contrastLevel, findBestContrast, brightness, isDark
 export {formatRgbToHex, formatRgbToString, formatHslToString, formatHsvToString} from "./format";
 export {blend, blendMultiply, blendScreen, blendOverlay, blendSoftlight, blendHardlight, blendDifference,
   blendExclusion, blendAverage, blendNegation} from "./blend";
-export {almostEqualRgb, almostEqualHsl, almostEqualHsv, almostEqualHwb, almostEqualCmyk} from "./compare";
+export {almostEqualRgb, almostEqualHsl, almostEqualHsv, almostEqualHwb, almostEqualCmyk, almostEqualXyz, almostEqualXyy,
+  almostEqualLab, almostEqualLch} from "./compare";
