@@ -15,3 +15,4 @@ export {blend, blendMultiply, blendScreen, blendOverlay, blendSoftlight, blendHa
 export {almostEqualRgb, almostEqualHsl, almostEqualHsv, almostEqualHwb, almostEqualCmyk, almostEqualXyz, almostEqualXyy,
   almostEqualLab, almostEqualLch} from "./compare";
 export {randomHappyColor, randomWarmColor} from "./palette";
+export {parseHex} from "./parse";

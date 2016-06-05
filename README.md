@@ -129,6 +129,10 @@ All color models are using values with a range `[0, 1]` for all properties.
 - `formatHslToString(hsl: HslColor): string`
 - `formatHsvToString(hsv: HsvColor): string`
 
+## Text parsing functions
+
+- `parseHex(hex: string): RgbColor`
+
 ## Compare functions
 
 ```txt
